@@ -1,0 +1,21 @@
+nav .navbar-nav li a{
+    color: white !important;
+    }
+
+
+
+.div-nav-outer{
+    margin-right: 1px;
+    margin-left: 1px;
+    height: 50px;
+}
+
+.div-well-details{
+    margin-right: 1px;
+    margin-left: 1px;
+}
+
+.div-dvd{
+    margin-right: 0.1px;
+    margin-left: 0.1px;
+}
