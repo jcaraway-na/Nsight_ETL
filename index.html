@@ -16,74 +16,72 @@
     <link rel="stylesheet" href="static/css/color.css">
     <!-- include components -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 
-<body class="bg-dark">
+<body class="bg-light">
+
     <div class="wrapper">
-                    <!-- Navigation bar -->
-                    <nav class="navbar navbar-expand-lg black div-nav-outer">
-                        <a class="navbar-brand" href="#"><object data="static/images/NSIGHT_Horiz_White.svg" width="100" height="100"> </object></a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
-                                <li class="nav-item active">
-                                <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
-                                </li>
-                                <li class="nav-item">
-                                <a class="nav-link" href="#">Directional</a>
-                                </li>
-                                <li class="nav-item">
-                                <a class="nav-link" href="#">Cost</a>
-                                </li>
-                            </ul>
-                            </div>
-                    </nav>
-                    <br></br>
         <div class="container-fluid">
-            <div class="row light-gry rounded div-dvd">
+            <div class="row light-gry rounded div-well-info">
+                <!-- Navigation bar -->
+                <nav class="navbar navbar-expand-lg div-nav-outer">
+                    <a class="navbar-brand" href="#"><object data="static/images/NSIGHT_Horiz_Black.svg" width="100" height="100"> </object></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                            <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" href="#">Directional</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" href="#">Cost</a>
+                            </li>
+                        </ul>
+                        </div>
+                </nav>
+            </div>
+    
+
+            <!-- Well Information -->
+            <div class="row light-gry rounded div-well-info">
                 <div class="col-md">subjectt well header info</div>
                 <div class="col-md">subjectt well header info</div>
                 <div class="col-md">subjectt well header info</div>
             </div>
-            <br></br>
-            <div class="row light-gry rounded div-dvd">
+            <!-- DVD -->
+            <div class="row light-gry rounded div-well-info">
                 <div id="dvd-plot" class="col-md"></div>
                 <div id="cvd-plot" class="col-md"></div>
                 <div id="avg-rop-plot" class="col-md"></div>
             </div>
-            <br></br>
-            <div class="row">
-                <div id="rop-plot" class="col-md border">ROP GOES HERE</div>
-            </div>
-            <div class="row">
-                <div id="bit-rpm-plot" class="col-md border">BIT RPM GOES HERE</div>
-            </div>
-            <div class="row">
-                <div id="wob-plot" class="col-md border">WOB GOES HERE</div>
-            </div>
-            <div class="row">
-                <div id="recommend-plot" class="col-md border">RECOMMENDATIONS GOES HERE</div>
-            </div>
-            <br></br>
-            <div class="row">
-            <div class="col-md border">
-                <table class="table table-striped table-dark rounded table-sm">
-                    <thead>
-                    <tr>
-                        <th>Formation</th>
-                        <th>End Depth</th>
-                        <th>Target ROP</th>
-                        <th>Actual ROP</th>
-                        <th>Target DHMSE</th>
-                        <th>Actual DHMSE</th>
-                    </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+            <!-- Well Data Traces ROP WOB MSE -->
+            <div id="rop-plot" class="row light-gry rounded div-well-info div-scatter"></div>
+            <div id="mse-plot" class="row light-gry rounded div-well-info div-scatter"></div>
+            <div id="wob-plot" class="row light-gry rounded div-well-info div-scatter"></div>
+            <div id="bit-rpm-plot" class="row light-gry rounded div-well-info div-scatter"></div>
+            <div class="row light-gry rounded div-well-info">
+                <div class="col-md-8">
+                    <table class="table table-striped table-dark rounded table-sm div-well-info">
+                        <thead>
+                        <tr>
+                            <th id="formation">Formation</th>
+                            <th>End Depth</th>
+                            <th>Target ROP</th>
+                            <th>Actual ROP</th>
+                            <th>Target DHMSE</th>
+                            <th>Actual DHMSE</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
                 </div>
+                <div class="col-md-4">parameter heatmap goes here</div>
             </div>
         </div>
         
@@ -91,6 +89,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
     <script src="static/js/app.js"></script>
+    <script src="static/js/plot.js"></script>
 </body>
 
 </html>

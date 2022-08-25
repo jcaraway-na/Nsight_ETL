@@ -1,13 +1,18 @@
 nav .navbar-nav li a{
-    color: white !important;
+    color: rgb(135, 61, 255) !important;
     }
-
-
 
 .div-nav-outer{
     margin-right: 1px;
     margin-left: 1px;
+    margin-bottom: 0px;
     height: 50px;
+}
+
+.div-well-info{
+    margin-top: 5px;
+    margin-right: 1px;
+    margin-left: 1px;
 }
 
 .div-well-details{
@@ -18,4 +23,8 @@ nav .navbar-nav li a{
 .div-dvd{
     margin-right: 0.1px;
     margin-left: 0.1px;
+}
+
+.div-scatter{
+    height: 350px;
 }
