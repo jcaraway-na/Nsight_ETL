@@ -1,5 +1,5 @@
 var drillDataCols = ['ROPFast','BitWeight','DownholeMSE','DSBitRPM']
-var roadMapCols = ['WellName','Formation','EndDepth','AvgRop','AvgDmse','ConservativeDays']
+var roadMapCols = ['WellName','Formation','EndDepth','AvgRop','AvgDmse','CumConservativeDays']
 
 
 function init(){
@@ -27,11 +27,9 @@ function processData(allRows,xValue,yValue){
 
 function makePlotly(x,y,tag){
     
-    if(tag ==='ConservativeDays'){
-        var cumDays = []
-        y.reduce(function(a,b,i){return cumDays[i]=a+b;},0);
+    if(tag ==='CumConservativeDays'){
         trace = [{
-            x:cumDays,
+            x:y,
             y:x,
             type:'lines',
             marker: {
@@ -124,7 +122,7 @@ function makePlotly(x,y,tag){
         var config = {responsive: true}
         Plotly.newPlot('bit-rpm-plot',trace,layout,config);
     }
-    else if(tag ==='ConservativeDays'){
+    else if(tag ==='CumConservativeDays'){
       var layout = {
           xaxis: {title: "Days"},
           yaxis: {title: "Depth"},
