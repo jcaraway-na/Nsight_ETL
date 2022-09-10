@@ -1,0 +1,38 @@
+​
+.login-flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login-flex-item {
+
+    padding: 12px;
+    display: inline-block;
+    width: 350px;
+    border-radius: 25px;
+  }
+  .login-inputs {
+    padding: 12px 12px 12px 12px;
+  }
+  .login-button {
+    padding: 12px;
+    width: 300px;
+  }
+  .login-text {
+    justify-content: center;
+    align-items: center;
+    padding: 25px 10px 10px 20px;
+  }
+  
+  .login-top{
+    background-color:  rgba(135, 61, 255, .5);
+  }
+  .login-background{
+    background-image: url(/static/images/rig2.png);
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+  }

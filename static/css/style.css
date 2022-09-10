@@ -1,30 +1,18 @@
-nav .navbar-nav li a{
-    color: rgb(135, 61, 255) !important;
-    }
+/* html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+} */
 
-.div-nav-outer{
-    margin-right: 1px;
-    margin-left: 1px;
-    margin-bottom: 0px;
-    height: 50px;
+.div-margin{
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
 }
-
-.div-well-info{
-    margin-top: 5px;
-    margin-right: 1px;
-    margin-left: 1px;
+.div-image{
+align-items: center;
 }
-
-.div-well-details{
-    margin-right: 1px;
-    margin-left: 1px;
-}
-
-.div-dvd{
-    margin-right: 0.1px;
-    margin-left: 0.1px;
-}
-
-.div-scatter{
-    height: 350px;
+.div-top-btm-margin{
+    margin-top: 0;
+    margin-bottom: 10;
 }

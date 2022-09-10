@@ -2,94 +2,238 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Welcome to Nsight</title>
-  <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome to Nsight</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     <link rel="stylesheet" href="static/css/style.css">
     <link rel="stylesheet" href="static/css/color.css">
+    <link rel="stylesheet" href="static/css/fonts.css">
+    <link rel="stylesheet" href="static/css/forms.css">
+    <link rel="stylesheet" href="static/css/nav.css">
+    <link rel="stylesheet" href="static/css/tables.css">
     <!-- include components -->
+    <script src="https://unpkg.com/d3@7.6.1/dist/d3.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
 </head>
 
-<body class="bg-light">
+<body class="light-gry">
 
     <div class="wrapper">
         <div class="container-fluid">
-            <div class="row light-gry rounded div-well-info">
-                <!-- Navigation bar -->
-                <nav class="navbar navbar-expand-lg div-nav-outer">
-                    <a class="navbar-brand" href="#"><object data="static/images/NSIGHT_Horiz_Black.svg" width="100" height="100"> </object></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item active">
-                            <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" href="#">Directional</a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" href="#">Cost</a>
-                            </li>
-                        </ul>
+            <!-- nav bar -->
+            <div style="height: 60px;" id="navbar" class="light-gry row">                
+                <a style="margin-left: 2%; margin-right: 2%;" href="https://nsight-analytics.com/">
+                    <object data="static/images/NSIGHT_Horiz_Black.svg" width="80" height="45"></object></a>
+                <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" style="text-align: center;"
+                    href="#home">Home</a>
+                <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" href="#news">Cost</a>
+                <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" href="#contact">Directional</a>
+            </div>
+            <!-- end nav bar -->
+            <!-- well header information -->
+            <div id="wellinfo" calss="row div-margin">
+                <div style=" margin-top: 1%; margin-bottom: 1%;" class="col panels">
+                    <caption style="caption-side:top;">
+                        <p style="text-align: center;" class="large-font">Well Information</p>
+                    </caption>
+                    <div id="wellheader" class="row">
+                        <div id="wellheader-1" class="col-sm-4">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td style="text-align: right;" class="small-font">Well Name:</td>
+                                        <td id="wellname"
+                                            style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                        <td style="text-align: right;" class="small-font">AFE DHC:</td>
+                                        <td id="afedhc"
+                                            style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: right;" class="small-font">AFE Number:</td>
+                                        <td id="wellname"
+                                            style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                        <td style="text-align: right;" class="small-font">AFE TVD:</td>
+                                        <td id="afetvd"
+                                            style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: right;" class="small-font">Contractor:</td>
+                                        <td id="wellname"
+                                            style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                        <td style="text-align: right;" class="small-font">AFE Days:</td>
+                                        <td id="afedays"
+                                            style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                </nav>
-            </div>
-    
-
-            <!-- Well Information -->
-            <div class="row light-gry rounded div-well-info">
-                <div class="col-md">subjectt well header info</div>
-                <div class="col-md">subjectt well header info</div>
-                <div class="col-md">subjectt well header info</div>
-            </div>
-            <!-- DVD -->
-            <div class="row light-gry rounded div-well-info">
-                <div id="dvd-plot" class="col-md"></div>
-                <div id="cvd-plot" class="col-md"></div>
-                <div id="avg-rop-plot" class="col-md"></div>
-            </div>
-            <!-- Well Data Traces ROP WOB MSE -->
-            <div id="rop-plot" class="row light-gry rounded div-well-info div-scatter"></div>
-            <div id="mse-plot" class="row light-gry rounded div-well-info div-scatter"></div>
-            <div id="wob-plot" class="row light-gry rounded div-well-info div-scatter"></div>
-            <div id="bit-rpm-plot" class="row light-gry rounded div-well-info div-scatter"></div>
-            <div class="row light-gry rounded div-well-info">
-                <div class="col-md-8">
-                    <table class="table table-striped table-dark rounded table-sm div-well-info">
-                        <thead>
-                        <tr>
-                            <th id="formation">Formation</th>
-                            <th>End Depth</th>
-                            <th>Target ROP</th>
-                            <th>Actual ROP</th>
-                            <th>Target DHMSE</th>
-                            <th>Actual DHMSE</th>
-                        </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
+                        <div id="wellheader-2" class="col">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td style="text-align: right;" class="small-font">State:</td>
+                                        <td id="state" style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                        <td style="text-align: right;" class="small-font">Total Cost:</td>
+                                        <td id="totalcost" style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: right;" class="small-font">County:</td>
+                                        <td id="county" style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                        <td style="text-align: right;" class="small-font">AFE Budget:</td>
+                                        <td id="afebudget" style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: right;" class="small-font">API Number:</td>
+                                        <td id="apinumber" style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                        <td style="text-align: right;" class="small-font">AFE Days:</td>
+                                        <td id="afedays"style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="wellheader-3" class="col-sm-4">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td style="text-align: right;" class="small-font">Operator:</td>
+                                        <td id="operator" style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                        <td style="text-align: right;" class="small-font">Spud Date:</td>
+                                        <td id="spuddate" style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: right;" class="small-font">Engineer:</td>
+                                        <td id="engineer" style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                        <td style="text-align: right;" class="small-font">DFS:</td>
+                                        <td id="dfs" style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: right;" class="small-font">Contractor:</td>
+                                        <td id="wellname"
+                                            style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                        <td style="text-align: right;" class="small-font">Target Formation:</td>
+                                        <td id="targetformation" style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-4">parameter heatmap goes here</div>
+            </div>
+            <!-- DVD and high lvl drill specs -->
+            <div class="row">
+
+                <div style="padding: 1%;" class="col-sm-4 panels div-margin">
+                    <table >
+                        <tr>
+                            <td>
+                                <p style="text-align: right;" class="div-margin medium-font">Select Well:</p>
+                            </td>
+                            <td>
+                                <select style="color: white; width: 200px;" id="sel" class="btn dark-gry dropdown-toggle" onchange="optionChanged(this.value)"></select>
+                            </td>
+                        </tr>
+                    </table>
+
+
+                    <caption style="caption-side:top;">
+                        <p style="text-align: center;" class="large-font">Days vs Depth</p>
+                    </caption>
+                </div>
+
+                <div class="col panels div-margin">
+                    <caption style="caption-side:top;">
+                        <p style="text-align: center;" class="large-font">Time Breakdown</p>
+                    </caption>
+                    <div class="row">
+                        <div id="wellheader-1" class="col-sm-8">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td style="text-align: right;" class="medium-font">Report Date:</td>
+                                        <td id="reportdate"
+                                            style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                        <td style="text-align: right;" class="medium-font">Avg ROP:</td>
+                                        <td id="avgrop" style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                        <td style="text-align: right;" class="medium-font">Avg BitRPM:</td>
+                                        <td id="avgbitrpm" style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: right;" class="medium-font">Depth at Report Time::</td>
+                                        <td id="offbtmhrs"
+                                            style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                        <td style="text-align: right;" class="medium-font">Avg WOB:</td>
+                                        <td id="avgwob" style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                        <td style="text-align: right;" class="medium-font">TVD:</td>
+                                        <td id="tvd" style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: right;" class="medium-font">Feet Drilled:</td>
+                                        <td id="feetdrilled"
+                                            style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                        <td style="text-align: right;" class="medium-font">Avg Diff:</td>
+                                        <td id="avgdiff" style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                        <td style="text-align: right;" class="medium-font">Inc.:</td>
+                                        <td id="inc" style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: right;" class="medium-font">Hours Drilled:</td>
+                                        <td id="hoursdrilled"
+                                            style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                        <td style="text-align: right;" class="medium-font">Avg FlowIn:</td>
+                                        <td id="avgflowin" style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                        <td style="text-align: right;" class="medium-font">Azm:</td>
+                                        <td id="azm" style="text-align: left;padding-right: 20px; padding-left: 5px;">asdf</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div style="overflow-x: auto;" class="col tableFixHead">
+                        <caption style="caption-side:top;">
+                            <p style="text-align: left;" class="medium-font">Bit Record</p>
+                        </caption>
+                        <table id="bit-record" style="height: 50px;" class="table table-condensed">
+                            <thead>
+                                <th>Run</th>
+                                <th>Size</th>
+                                <th>Make</th>
+                                <th>Model</th>
+                                <th>Serial No.</th>
+                                <th>In</th>
+                                <th>Out</th>
+                                <th>Footage</th>
+                                <th>Hours</th>
+                                <th>ROP</th>
+                                <th>WOB</th>
+                                <th>RPM</th>
+                                <th>Nozzels</th>
+                                <th>TFA</th>
+                                <th>Dull</th>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
-        
+
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
-    <script src="static/js/app.js"></script>
+    <script src="static/js/nav.js"></script>
     <script src="static/js/plotOffset.js"></script>
+    <script type="module"  src="static/js/plotSubject.js"></script>
+    <script type="module" src="static/js/app.js"></script>
 </body>
 
 </html>

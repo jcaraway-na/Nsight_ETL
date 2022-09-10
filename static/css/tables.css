@@ -1,0 +1,18 @@
+.table-condensed{
+    font-size: 10px;
+  }
+
+  table{
+    min-width: max-content;
+
+  }
+
+
+  th {
+    background: rgba(135, 61, 255, .5);
+  }
+
+  tr:hover {
+    background-color: rgba(135, 61, 255, 1);
+    color: white;
+  }

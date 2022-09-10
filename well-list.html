@@ -1,0 +1,71 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Well List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/color.css">
+    <link rel="stylesheet" href="static/css/fonts.css">
+    <link rel="stylesheet" href="static/css/forms.css">
+    <link rel="stylesheet" href="static/css/nav.css">
+    <link rel="stylesheet" href="static/css/tables.css">
+    <!-- include components -->
+    <script src="https://unpkg.com/d3@7.6.1/dist/d3.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body class="light-gry">
+    <div class="wrapper">
+        <div class="container-fluid">
+            <!-- nav bar -->
+            <div style="height: 60px;" id="navbar" class="light-gry row">
+                <a style="margin-left: 2%; margin-right: 2%;" href="https://nsight-analytics.com/"><object
+                        data="static/images/NSIGHT_Horiz_Black.svg" width="80" height="45">
+                    </object></a>
+            </div>
+            <!-- end nav bar -->
+            <!-- Well List oreo-->
+            <div class="row">
+                <div style="overflow-y: scroll;" class="col panels-well-list div-margin ">
+                    <caption style="caption-side:top;">
+                        <p style="text-align: left;" class="medium-font">Well List</p>
+                    </caption>
+                    <table id="welllist" class="table table-condensed">
+                        <thead>
+                            <th>Well ID</th>
+                            <th>Well Name</th>
+                            <th>Lease Name</th>
+                            <th>Field</th>
+                            <th>State</th>
+                            <th>County</th>
+                            <th>Target Formation</th>
+                            <th>Permit No.</th>
+                            <th>API No.</th>
+                            <th>AFE No.</th>
+                            <th>Latitude</th>
+                            <th>Longitude</th>
+
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- End Well List -->
+        </div>
+    </div>
+
+    <script type="module" src="static/js/WellList/well-list.js"></script>
+    <script type="module" src="static/js/ApiCalls/calls.js"></script>
+
+</body>
+
+</html>

@@ -1,12 +1,54 @@
-.dark-gry{
-    background: rgba(170, 174, 193, 0.2)
+.dark-gry {
+    background: rgba(170, 174, 193, .8)
 }
-.light-gry{
-    background: rgba(221, 221, 221, 1)
+
+.light-gry {
+    background: rgba(221, 221, 221, .8)
 }
-.black{
-    background: rgba(13, 18, 27, 0.2)
+
+.black {
+    background: rgba(13, 18, 27, 0.5)
 }
-.purple{
-    background: rgba(135, 61, 255, 0.2)
+
+.purple {
+    background: rgba(135, 61, 255, 1)
+}
+
+.white {
+    background: rgba(255, 255, 255, 1)
+}
+
+.panels {
+    background: linear-gradient(rgb(255, 255, 255, .8), rgba(252, 252, 252, 0.5));
+    box-shadow: -5px -5px 8px rgb(221, 221, 221, .8),
+        5px 5px 8px rgba(124, 124, 125, 0.2);
+    border-radius: 15px;
+    overflow: hidden;
+    height: 400px;
+    margin: 1%;
+}
+
+.panels-info {
+    background: linear-gradient(rgb(255, 255, 255, .8), rgba(252, 252, 252, 0.5));
+    box-shadow: -5px -5px 8px rgb(221, 221, 221, .8),
+        5px 5px 8px rgba(124, 124, 125, 0.2);
+    border-radius: 15px;
+    overflow: hidden;
+    height: 80px;
+    margin: 1%;
+}
+
+.panels-well-list {
+    background: linear-gradient(rgb(255, 255, 255, .8), rgba(252, 252, 252, 0.5));
+    box-shadow: -5px -5px 8px rgb(221, 221, 221, .8),
+        5px 5px 8px rgba(124, 124, 125, 0.2);
+    border-radius: 15px;
+    overflow: hidden;
+    height: 100vh - 100px;
+}
+
+.panels-dark {
+
+
+    color: white;
 }

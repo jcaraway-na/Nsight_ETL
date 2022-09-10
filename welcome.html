@@ -1,0 +1,78 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/color.css">
+    <link rel="stylesheet" href="static/css/fonts.css">
+    <link rel="stylesheet" href="static/css/forms.css">
+    <link rel="stylesheet" href="static/css/nav.css">
+    <link rel="stylesheet" href="static/css/tables.css">
+    <link rel="stylesheet" href="static/css/forms.css">
+    <!-- include components -->
+    <script src="https://unpkg.com/d3@7.6.1/dist/d3.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body class="light-gry login-background ">
+    <div class="row">
+        <a style="margin-left: 2%; margin-right: 2%; align-content: top;" href="https://nsight-analytics.com/">
+            <object data="static/images/NSIGHT_Horiz_Black.svg" width="80" height="45"></object></a>
+    </div>
+    <div style="height: 15rem;" class="row">
+
+    </div>
+    <div class="wrapper ">
+        <div class="row ">
+            <div class="col">
+            </div>
+            <div class="col-sm-3">
+                <div class="container-fluid">
+                    <div>
+                        <section class="login-flex-container">
+                            <div class="login-flex-item panels">
+                                <div class="large-font">
+                                    <caption style="caption-side:top;">
+                                        <p style="text-align: center;" class="large-font">Welcome, please login...</p>
+                                    </caption>
+                                </div>
+                                <div class="input-group flex-nowrap  login-inputs">
+                                    <input id="username" type="text" class="form-control" placeholder="Username"
+                                        aria-label="Username" aria-describedby="addon-wrapping">
+                                </div>
+                                <div class="input-group flex-nowrap  login-inputs">
+                                    <input id="password" type="text" class="form-control" placeholder="Password"
+                                        aria-label="Username" aria-describedby="addon-wrapping">
+                                </div>
+                                <div class="d-grid gap-2 login-inputs">
+                                    <button id="login-btn" class="btn btn-primary login-button"
+                                        type="button">Login</button>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+    </div>
+    <div style="height: 15rem;" class="row">
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
+    <script type="module" src="static/js/Welcome/login.js"></script>
+    <script type="module" src="static/js/ApiCalls/calls.js"></script>
+</body>
+
+</html>
