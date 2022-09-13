@@ -185,8 +185,8 @@ export async function getDepthData(wellId,token){
     // return data;
 }
 
-export async function getTimeData(wellId){
-    var uri = `https://moontower-dashboard.azurewebsites.net/Roadmap/get-roadmap-by-wellid/${wellId}`
+export async function getTimeData(wellId,token){
+    var uri = `https://moontower-dashboard.azurewebsites.net/DrillingTime/get-drilldata-by-wellid/${wellId}`
     const responce = await fetch(uri,{
         headers: {
             'Content-Type': 'application/json',
@@ -195,6 +195,6 @@ export async function getTimeData(wellId){
         method: 'GET'
     });
     const data = await responce.json();
-    
+    console.log(data);
     return data;
 }

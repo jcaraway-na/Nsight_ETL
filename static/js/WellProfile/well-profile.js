@@ -1,4 +1,7 @@
-import { getBitRecord, getWellHeader, getBoreHole,getFormation } from '../ApiCalls/calls.js'
+import { getBitRecord, getWellHeader, getTimeData, getBoreHole,getFormation, getDailySummary } from '../ApiCalls/calls.js'
+import { dvdChart,predictedTimeData,timeDrillingData } from '../Analytics/charts.js'
+
+
 const autho = JSON.parse(sessionStorage.getItem('token'));
 const token = autho.token;
 const well = JSON.parse(sessionStorage.getItem('selectedWell'));
@@ -51,8 +54,7 @@ async function bitRecord(id) {
 
 async function boreHole(id) {
     var data = await getBoreHole(id,token);
-    console.log('casing data....');
-    console.log(data);
+
     for (var i in data) {
         var row = `<tr>
                         <td>${data[i].holeSection}</td>
@@ -75,8 +77,7 @@ async function boreHole(id) {
 
 async function formationDetails(id){
     var data = await getFormation(id,token);
-    console.log('formation data....');
-    console.log(data);
+
     for (var i in data) {
         var row = `<tr>
                         <td>${data[i].formationName}</td>
@@ -92,7 +93,37 @@ async function formationDetails(id){
 }
 
 
+async function dailySummaries(id){
+    var data = await getDailySummary(id,token);
+    await dvdChart(data,'Subject');
+    for (var i in data) {
+        var row = `<tr>
+                        <td>${data[i].reportDate}</td>
+                        <td>${data[i].reportTimeDepth}</td>
+                        <td>${data[i].progress}</td>
+                        <td>${data[i].drillHrs}</td>
+                        <td>${data[i].avgRop}</td>
+                        <td>${data[i].avgWob}</td>
+                        <td>${data[i].avgDiff}</td>
+                        <td>${data[i].avgFlowIn}</td>
+                        <td>${data[i].avgBitRpm}</td>
+                        <td>${data[i].tvd}</td>
+                        <td>${data[i].inc}</td>
+                        <td>${data[i].azm}</td>
+                    </tr>`;
+        var table = $(`#daily-summaries`);
+
+        table.append(row);
+    }
+
+    await dvdChart(data.reportDate,data.reportTimeDepth);
+
+}
+
 await header();
+await dailySummaries(wellId);
 await bitRecord(wellId);
 await boreHole(wellId);
 await formationDetails(wellId);
+await predictedTimeData();
+await timeDrillingData(await getTimeData(wellId,token),'Subject');

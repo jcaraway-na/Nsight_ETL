@@ -30,10 +30,9 @@
         <div class="container-fluid">
             <!-- nav bar -->
             <div style="height: 60px;" id="navbar" class="light-gry row">
-                <a style="margin-left: 2%; margin-right: 2%;" href="https://nsight-analytics.com/">
-                    <object data="static/images/NSIGHT_Horiz_Black.svg" width="80" height="45"></object></a>
-                <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" style="text-align: center;"
-                    href="#home">Home</a>
+                <a style="margin-left: 2%; margin-right: 2%;" href="https://nsight-analytics.com/" target="_blank">
+                    <object data="static/images/NSIGHT_Horiz_Black.png" width="100" height="30"></object></a>
+                <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" style="text-align: center;"href="well-list.html">Home</a>
                 <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" href="#news">Cost</a>
                 <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" href="#contact">Directional</a>
             </div>
@@ -82,41 +81,141 @@
                         <p style="text-align: left;" class="medium-font">Filters</p>
                     </caption>
                 </div>
-            </div>
-            
+            </div>          
             <!-- Summary Table and DVD -->
             <div class="row">
-                <div id="dvd" class="col-sm-4 panels">
+                <div class="col-sm-4 panels">
                     <caption style="caption-side:top;">
                         <p style="text-align: left;" class="medium-font">Days vs Depth</p>
                     </caption>
+                    <div id="dvd">
+                    </div>
                 </div>
+                <div class="col-sm-4   panels">
+                    <caption style="caption-side:top;">
+                        <p style="text-align: left;" class="medium-font">Days vs Field Est.</p>
+                    </caption>
+                    <div id="cvd">
+                    </div>
+                </div>
+                <div class="col panels">
+                    <caption style="caption-side:top;">
+                        <p style="text-align: left;" class="medium-font">Performance Summary</p>
+                    </caption>
+                    <table class="table table-condensed table-wrapper">
+                        <thead>
+                            <th>Metric</th>
+                            <th>Surf</th>
+                            <th>Inter I</th>
+                            <th>Curve</th>
+                            <th>Prod.</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="text-align: right;" class="medium-font">On Bottom Hrs:</td>
+                                <td id="onbtmhrs-surf" class="small-font"></td>
+                                <td id="onbtmhrs-inti" class="small-font"></td>
+                                <td id="onbtmhrs-curve" class="small-font"></td>
+                                <td id="onbtmhrs-prod" class="small-font"></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right;" class="medium-font">Off Bottom Hrs:</td>
+                                <td id="offbtmhrs-surf" class="small-font"></td>
+                                <td id="offbtmhrs-inti" class="small-font"></td>
+                                <td id="offbtmhrs-curve" class="small-font"></td>
+                                <td id="offbtmhrs-prod" class="small-font"></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right;" class="medium-font">On Bottom ROP:</td>
+                                <td id="onbtmrop-surf" class="small-font"></td>
+                                <td id="onbtmrop-inti" class="small-font"></td>
+                                <td id="onbtmrop-curve" class="small-font"></td>
+                                <td id="onbtmrop-prod" class="small-font"></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right;" class="medium-font">Slide Hrs:</td>
+                                <td id="sldhrs-surf" class="small-font"></td>
+                                <td id="sldhrs-inti" class="small-font"></td>
+                                <td id="sldhrs-curve" class="small-font"></td>
+                                <td id="sldhrs-prod" class="small-font"></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right;" class="medium-font">ROT Hrs:</td>
+                                <td id="rothrs-surf" class="small-font"></td>
+                                <td id="rothrs-inti" class="small-font"></td>
+                                <td id="rothrs-curve" class="small-font"></td>
+                                <td id="rothrs-prod" class="small-font"></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right;" class="medium-font">Avg ROP:</td>
+                                <td id="avgrop-surf" class="small-font"></td>
+                                <td id="avgrop-inti" class="small-font"></td>
+                                <td id="avgrop-curve" class="small-font"></td>
+                                <td id="avgrop-prod" class="small-font"></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right;" class="medium-font">Avg Bit RPM:</td>
+                                <td id="avgbitrpm-surf" class="small-font"></td>
+                                <td id="avgbitrpm-inti" class="small-font"></td>
+                                <td id="avgbitrpm-curve" class="small-font"></td>
+                                <td id="avgbitrpm-prod" class="small-font"></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right;" class="medium-font">Avg DiffP:</td>
+                                <td id="avgdiffp-surf" class="small-font"></td>
+                                <td id="avgdiffp-inti" class="small-font"></td>
+                                <td id="avgdiffp-curve" class="small-font"></td>
+                                <td id="avgdiffp-prod" class="small-font"></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right;" class="medium-font">Avg FlowIn:</td>
+                                <td id="avgflowin-surf" class="small-font"></td>
+                                <td id="avgflowin-inti" class="small-font"></td>
+                                <td id="avgflowin-curve" class="small-font"></td>
+                                <td id="avgflowin-prod" class="small-font"></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right;" class="medium-font">Avg MSE:</td>
+                                <td id="avgmse-surf" class="small-font"></td>
+                                <td id="avgmse-inti" class="small-font"></td>
+                                <td id="avgmse-curve" class="small-font"></td>
+                                <td id="avgmse-prod" class="small-font"></td>
+                            </tr>
+                        </tbody>
+                        
+                    </table>
+                    <br></br>
+                </div>
+            </div>
+            <div class="row">
                 <div style="min-height: 350px;" class="col  panels">
                     <caption style="caption-side:top;">
                         <p style="text-align: left;" class="medium-font">Daily Summaries</p>
                     </caption>
-                    <div style="overflow-y: scroll; max-height: 350px;"></div>
-                    <table id="daily-summaries" class="table table-condensed table-wrapper">
-                        <thead>
-                            <th>Report Date</th>
-                            <th>AM Depth</th>
-                            <th>Footage Drilled</th>
-                            <th>Drill Hrs</th>
-                            <th>Avg ROP</th>
-                            <th>Avg WOB</th>
-                            <th>Avg Diff</th>
-                            <th>Avg FlowIn</th>
-                            <th>Avg Bit RPM</th>
-                            <th>TVD</th>
-                            <th>Inc</th>
-                            <th>Azm</th>
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-                    </table>
+                    <div style="overflow-y: scroll; max-height: 350px;">
+                        <table id="daily-summaries" class="table table-condensed table-wrapper">
+                            <thead>
+                                <th>Report Date</th>
+                                <th>AM Depth</th>
+                                <th>Footage Drilled</th>
+                                <th>Drill Hrs</th>
+                                <th>Avg ROP</th>
+                                <th>Avg WOB</th>
+                                <th>Avg Diff</th>
+                                <th>Avg FlowIn</th>
+                                <th>Avg Bit RPM</th>
+                                <th>TVD</th>
+                                <th>Inc</th>
+                                <th>Azm</th>
+                            </thead>
+                            <tbody>
+    
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
+
             <!-- Casing Design -->
             <div class="row">
                 <div class="col panels">
@@ -216,10 +315,12 @@
             </div>
             <!-- Drilling Data -->
             <div class="row">
-                <div id="rop-mse-plot" class="col panels">
+                <div class="col panels">
                     <caption style="caption-side:top;">
                         <p style="text-align: left;" class="medium-font">ROP & MSE Trace</p>
                     </caption>
+                    <div id="ROPFast">
+                    </div>
                 </div>
             </div>
         </div>
@@ -231,6 +332,8 @@
     <script src="static/js/plotOffset.js"></script>
     <script type="module" src="static/js/ApiCalls/calls.js"></script>
     <script type="module" src="static/js/WellProfile/well-profile.js"></script>
+    <script type="module" src="static/js/Analytics/charts.js"></script>
+
 </body>
 
 </html>
