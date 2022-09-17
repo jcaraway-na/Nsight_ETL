@@ -10,24 +10,33 @@ export async function dvdChart(data, well) {
     if (well === 'Subject') {
         for (var i = 0; i < data.length; i++) {
             row = data[i];
-            x.push(i);
-            y.push(row['reportTimeDepth'])
+            x.push(row['cumDays']);
+            y.push(row['measuredDepth'])
         }
         await makePlotly(x, y, 'dvd')
     }
 }
 
-export async function timeDrillingData(data, well) {
-    var x = [], y = []
+export async function timeDataSubject(data, well) {
+    var x = [], y = [];
     var row;
 
     if (well === 'Subject') {
+        // plots x and y for rop chart
         for (var i = 0; i < data.length; i++) {
             row = data[i];
             x.push(row['measuredDepth']);
             y.push(row['ropFast'])
         }
         await addToPlotly(x, y, 'ROPFast');
+        // creates x and y for subject well dvd chart
+        x = [],y=[];
+        for (var i = 0; i < data.length; i++) {
+            row = data[i];
+            x.push(row['cumDays']);
+            y.push(row['measuredDepth'])
+        }
+        await makePlotly(x, y, 'dvd')
     }
 }
 
@@ -170,5 +179,18 @@ async function addToPlotly(x, y, tag) {
             }
         }]
         Plotly.addTraces('ROPFast', subjectTrace)
+    }
+    else if(tag === 'dvd'){
+        let subjectTrace = [{
+            x: x,
+            y: y,
+            name: 'Subject Well',
+            type: 'scatter',
+            marker: {
+                color: 'rgba(135, 61, 255, 1)',
+                size: 8
+            }
+        }]
+        Plotly.addTraces('dvd', subjectTrace)
     }
 }

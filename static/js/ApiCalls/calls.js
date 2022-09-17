@@ -1,6 +1,7 @@
 const wellId = localStorage;
 const orgId = '1';
 const username = sessionStorage.username;
+const api = JSON.parse(sessionStorage.getItem('apiCalls'));
 
 export function init(wellId) {
     var allHeaders = getAllWellHeaders(wellId);
@@ -31,10 +32,24 @@ export async function postLogin(username, password){
     return responce.json();
 }
 
+export async function getApiByOrgId(orgid,token) {
+
+    var uri = `https://moontower-dashboard.azurewebsites.net/Api/get-api-by-orgid/${orgid}`
+    const responce = await fetch(uri,{
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        method: 'GET'
+    });
+    const data = await responce.json();
+
+    return data;
+}
 
 export async function getAllWellHeaders(token) {
 
-    var uri = `https://moontower-dashboard.azurewebsites.net/WellHeader/get-all-wells`
+    var uri = api.GetAllWellHeaders
     const responce = await fetch(uri,{
         headers: {
             'Content-Type': 'application/json',
@@ -48,7 +63,7 @@ export async function getAllWellHeaders(token) {
 }
 
 export async function getWellHeader(wellId,token) {
-    var uri = `https://moontower-dashboard.azurewebsites.net/WellHeader/get-wells-by-id/${wellId}`
+    var uri = api.GetWellHeaderById+`${wellId}`
     const responce = await fetch(uri,{
         headers: {
             'Content-Type': 'application/json',
@@ -64,7 +79,7 @@ export async function getWellHeader(wellId,token) {
 }
 
 export async function getBitRecord(wellId,token) {
-    var uri = `https://moontower-dashboard.azurewebsites.net/BitRecord/get-bitrecord-by-wellid/${wellId}`
+    var uri = `${api.GetBitRecordByWellId}${wellId}`
     const responce = await fetch(uri,{
         headers: {
             'Content-Type': 'application/json',
@@ -80,7 +95,7 @@ export async function getBitRecord(wellId,token) {
 }
 
 export async function getAfeBudget(wellId,token) {
-    var uri = `https://moontower-dashboard.azurewebsites.net/AfeBudget/get-budget-by-wellid/${wellId}`
+    var uri = `${api.GetAfeBudgetByWellId}${wellId}`
     const responce = await fetch(uri,{
         headers: {
             'Content-Type': 'application/json',
@@ -94,7 +109,7 @@ export async function getAfeBudget(wellId,token) {
 }
 
 export async function getBoreHole(wellId,token) {
-    var uri = `https://moontower-dashboard.azurewebsites.net/BoreHole/get-borehole-by-wellid/${wellId}`
+    var uri = `${api.GetBoreHoleByWellId}${wellId}`
     const responce = await fetch(uri,{
         headers: {
             'Content-Type': 'application/json',
@@ -108,7 +123,7 @@ export async function getBoreHole(wellId,token) {
 }
 
 export async function getDailySummary(wellId,token) {
-    var uri = `https://moontower-dashboard.azurewebsites.net/DailySummary/get-dailysummaries-by-wellid/${wellId}`
+    var uri = `${api.GetDailySummaryByWellId}${wellId}`
     const responce = await fetch(uri,{
         headers: {
             'Content-Type': 'application/json',
@@ -122,7 +137,7 @@ export async function getDailySummary(wellId,token) {
 }
 
 export async function getDirectional(wellId,token) {
-    var uri = `https://moontower-dashboard.azurewebsites.net/Directional/get-directional-by-wellid/${wellId}`
+    var uri = `${api.GetDirectionalByWellId}${wellId}`
     const responce = await fetch(uri,{
         headers: {
             'Content-Type': 'application/json',
@@ -136,7 +151,7 @@ export async function getDirectional(wellId,token) {
 }
 
 export async function getFormation(wellId,token) {
-    var uri = `https://moontower-dashboard.azurewebsites.net/Formation/get-tops-by-wellid/${wellId}`
+    var uri = `${api.GetFormationByWellId}${wellId}`
     const responce = await fetch(uri,{
         headers: {
             'Content-Type': 'application/json',
@@ -150,7 +165,7 @@ export async function getFormation(wellId,token) {
 }
 
 export async function getMotorSelection(wellId,token) {
-    var uri = `https://moontower-dashboard.azurewebsites.net/MotorSelection/get-motors-by-wellid/${wellId}`
+    var uri = `${api.GetMotorSelectionByWellId}${wellId}`
     const responce = await fetch(uri,{
         headers: {
             'Content-Type': 'application/json',
@@ -164,7 +179,7 @@ export async function getMotorSelection(wellId,token) {
 }
 
 export async function getRoadmap(wellId,token) {
-    var uri = `https://moontower-dashboard.azurewebsites.net/Roadmap/get-roadmap-by-wellid/${wellId}`
+    var uri = `${api.GetRoadMapByWellId}${wellId}`
     const responce = await fetch(uri,{
         headers: {
             'Content-Type': 'application/json',
@@ -178,15 +193,25 @@ export async function getRoadmap(wellId,token) {
 }
 
 export async function getDepthData(wellId,token){
-    // var uri = `https://moontower-dashboard.azurewebsites.net/Roadmap/get-roadmap-by-wellid/${wellId}`
-    // const responce = await fetch(uri);
-    // const data = await responce.json();
-    
-    // return data;
+
+}
+
+export async function getSectionSummary(wellId,token){
+    var uri = `${api.GetSectionSummaryByWellId}${wellId}`
+    const responce = await fetch(uri,{
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        method: 'GET'
+    });
+    const data = await responce.json();
+    console.log(data);
+    return data;
 }
 
 export async function getTimeData(wellId,token){
-    var uri = `https://moontower-dashboard.azurewebsites.net/DrillingTime/get-drilldata-by-wellid/${wellId}`
+    var uri = `${api.GetTimeDataByWellId}${wellId}`
     const responce = await fetch(uri,{
         headers: {
             'Content-Type': 'application/json',
