@@ -1,6 +1,6 @@
 import { getBitRecord, getSectionSummary, getTimeData, getBoreHole,getFormation, getDailySummary, init } from '../ApiCalls/calls.js'
 import { dvdChart,predictedTimeData,timeDataSubject } from '../Analytics/charts.js'
-
+import { makePlotly, addToPlotly} from '../global-chart.js';
 
 const autho = JSON.parse(sessionStorage.getItem('token'));
 const token = autho.token;
@@ -27,6 +27,8 @@ async function header() {
 
 async function sectionSummary(id){
     var data = await getSectionSummary(id,token);
+    console.log(data);
+    await makePlotly(data,'holeSection','avgROP','sectionsummary',well.wellName,'bar')
     if(Object.keys(data).length!== 0){
         document.getElementById('onbtmhrs-surf').innerHTML = data[3]['onBtmHrs'];
         document.getElementById('onbtmhrs-inti').innerHTML = data[1]['onBtmHrs'];
@@ -168,10 +170,10 @@ async function dailySummaries(id){
 
     await header();
     await dailySummaries(wellId);
-    await sectionSummary(wellId);
     await bitRecord(wellId);
     await boreHole(wellId);
     await formationDetails(wellId);
+    await sectionSummary(wellId);
     await predictedTimeData();
     await timeDataSubject(await getTimeData(wellId,token),'Subject');
 

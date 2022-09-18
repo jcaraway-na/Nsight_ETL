@@ -33,9 +33,9 @@
                 <a style="margin-left: 2%; margin-right: 2%;" href="https://nsight-analytics.com/" target="_blank">
                     <object data="static/images/NSIGHT_Horiz_Black.png" width="100" height="30"></object></a>
                 <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" style="text-align: center;"href="well-list.html">Home</a>
-                <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" style="text-align: center;"href="well-list.html">E24R</a>
-                <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" href="#news">Cost</a>
-                <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" href="#contact">Directional</a>
+                <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" style="text-align: center;"href="well-profile.html">E24R</a>
+                <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" href="well-cost.html">Cost</a>
+                <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" href="well-directional.html">Directional</a>
             </div>
             <!-- end nav bar -->
 
@@ -76,27 +76,30 @@
                     </table>
                 </div>
             </div>
+            <!-- filters -->
             <div class="row">
                 <div class="col panels-info">
                     <caption style="caption-side:top;">
                         <p style="text-align: left;" class="medium-font">Filters</p>
                     </caption>
                 </div>
-            </div>          
+            </div>   
+            <!-- end of filters  -->
+
             <!-- Summary Table and DVD -->
             <div class="row">
-                <div class="col-sm-4 panels">
+                <div class="col panels">
                     <caption style="caption-side:top;">
                         <p style="text-align: left;" class="medium-font">Days vs Depth</p>
                     </caption>
                     <div id="dvd">
                     </div>
                 </div>
-                <div class="col   panels">
+                <div class="col-sm-4 panels">
                     <caption style="caption-side:top;">
                         <p style="text-align: left;" class="medium-font">Days vs Field Est.</p>
                     </caption>
-                    <div id="cvd">
+                    <div id="sectionsummary">
                     </div>
                 </div>
                 <div class="col-sm-4 panels">
@@ -328,7 +331,7 @@
     <script type="module" src="static/js/ApiCalls/calls.js"></script>
     <script type="module" src="static/js/WellProfile/well-profile.js"></script>
     <script type="module" src="static/js/Analytics/charts.js"></script>
-
+    <script type="module" src="static/js/global-chart.js"></script>
 </body>
 
 </html>

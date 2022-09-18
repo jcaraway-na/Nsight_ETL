@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome to Nsight</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/color.css">
+    <link rel="stylesheet" href="static/css/fonts.css">
+    <link rel="stylesheet" href="static/css/forms.css">
+    <link rel="stylesheet" href="static/css/nav.css">
+    <link rel="stylesheet" href="static/css/tables.css">
+    <!-- include components -->
+    <script src="https://unpkg.com/d3@7.6.1/dist/d3.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+</head>
+
+<body class="light-gry">
+
+    <div class="wrapper">
+        <div class="container-fluid">
+            <!-- nav bar -->
+            <div style="height: 60px;" id="navbar" class="light-gry row">
+                <a style="margin-left: 2%; margin-right: 2%;" href="https://nsight-analytics.com/" target="_blank">
+                    <object data="static/images/NSIGHT_Horiz_Black.png" width="100" height="30"></object></a>
+                <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" style="text-align: center;"href="well-list.html">Home</a>
+                <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" style="text-align: center;"href="well-profile.html">E24R</a>
+                <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" href="well-cost.html">Cost</a>
+                <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" href="well-directional.html">Directional</a>
+            </div>
+            <!-- end nav bar -->
+
+            <!-- well header information -->
+            <div class="row">
+                <div class="col panels-info">
+                    <table>
+                        <tr>
+                            <td style="text-align: right;" class="medium-font">Well Name:</td>
+                            <td id="wellname" class="small-font"></td>
+                            <td style="text-align: right;" class="medium-font">AFE No:</td>
+                            <td id="afenumber" class="small-font"></td>
+                            <td style="text-align: right;" class="medium-font">State:</td>
+                            <td id="state" class="small-font"></td>
+                            <td style="text-align: right;" class="medium-font">Latitude:</td>
+                            <td id="lat" class="small-font"></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;" class="medium-font">Lease:</td>
+                            <td id="leasename" class="small-font"></td>
+                            <td style="text-align: right;" class="medium-font">API No.:</td>
+                            <td id="apinumber" class="small-font"></td>
+                            <td style="text-align: right;" class="medium-font">County:</td>
+                            <td id="county" class="small-font"></td>
+                            <td style="text-align: right;" class="medium-font">Longitude:</td>
+                            <td id="long" class="small-font"></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;" class="medium-font">Target Formation:</td>
+                            <td id="targetformation" class="small-font"></td>
+                            <td style="text-align: right;" class="medium-font">Permit No.:</td>
+                            <td id="permitnumber" class="small-font"></td>
+                            <td style="text-align: right;" class="medium-font">Field:</td>
+                            <td id="field" class="small-font"></td>
+                            <td style="text-align: right;" class="medium-font">Well ID:</td>
+                            <td id="wellid" class="small-font"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <!-- end well header information -->
+
+            <!-- filters -->
+            <div class="row">
+                <div class="col panels-info">
+                    <caption style="caption-side:top;">
+                        <p style="text-align: left;" class="medium-font">Filters</p>
+                    </caption>
+                </div>
+            </div>      
+            <!-- end of filters  -->
+            <div class="row border border-dark">
+                <div class="col-sm-4 panels border border-dark">
+                    <caption style="caption-side:top;">
+                        <p style="text-align: center;" class="medium-font">Days vs Cost</p>
+                    </caption>
+
+                </div>
+                <div class="col panels border border-dark">
+                    <caption style="caption-side:top;">
+                        <p style="text-align: center;" class="medium-font">Cost Account Subject vs AFE</p>
+                    </caption>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
+    <script src="static/js/plotOffset.js"></script>
+    <script type="module" src="static/js/ApiCalls/calls.js"></script>
+    <script type="module" src="static/js/WellProfile/well-profile.js"></script>
+    <script type="module" src="static/js/Analytics/charts.js"></script>
+
+</body>
+
+</html>
