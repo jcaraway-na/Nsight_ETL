@@ -77,39 +77,64 @@
                 </div>
             </div>
             <!-- end well header information -->
-
             <!-- filters -->
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col panels-info">
                     <caption style="caption-side:top;">
                         <p style="text-align: left;" class="medium-font">Filters</p>
                     </caption>
                 </div>
-            </div>      
+            </div>       -->
             <!-- end of filters  -->
             <div class="row border border-dark">
-                <div class="col-sm-4 panels border border-dark">
+                <div class="col-sm-6 panels border border-dark">
                     <caption style="caption-side:top;">
-                        <p style="text-align: center;" class="medium-font">Days vs Cost</p>
+                        <p style="text-align: center;" class="medium-font">AFE vs. Field Est.</p>
                     </caption>
-
+                    <div id="afevfe"></div>
                 </div>
                 <div class="col panels border border-dark">
                     <caption style="caption-side:top;">
-                        <p style="text-align: center;" class="medium-font">Cost Account Subject vs AFE</p>
+                        <p style="text-align: center;" class="medium-font">AFE Usage</p>
                     </caption>
-
+                    <div style="overflow-y: scroll; max-height: 350px;">
+                        <table id="afevsfe" class="table table-condensed table-wrapper">
+                            <thead>
+                                <th>Cost Code</th>
+                                <th>Description</th>
+                                <th>Field Est.</th>
+                                <th>AFE Amount</th>
+                                <th>% Used</th>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row border border-dark">
+                <div class="col panels border border-dark">
+                    <table id="selectedcostcode" class="table table-condensed table-wrapper">
+                        <thead>
+                            <th>Report Date</th>
+                            <th>Primary Code</th>
+                            <th>Sub Code</th>
+                            <th>Description</th>
+                            <th>Amount $</th>
+                            <th>Vendor</th>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 
-    </div>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
     <script src="static/js/plotOffset.js"></script>
     <script type="module" src="static/js/ApiCalls/calls.js"></script>
-    <script type="module" src="static/js/WellProfile/well-profile.js"></script>
+    <script type="module" src="static/js/WellCost/well-cost.js"></script>
     <script type="module" src="static/js/Analytics/charts.js"></script>
 
 </body>

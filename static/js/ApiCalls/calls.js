@@ -223,3 +223,31 @@ export async function getTimeData(wellId,token){
     console.log(data);
     return data;
 }
+
+export async function getDataByWellId(wellId,token){
+    var uri = `${api.GetBudgetVsFeByWellId}${wellId}`
+    const responce = await fetch(uri,{
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        method: 'GET'
+    });
+    const data = await responce.json();
+    console.log(data);
+    return data;
+}
+
+export async function getDataByWellIdCostCode(wellId,costCode,token){
+    var uri = `${api.GetAccountCostByWellIdCostCode}${wellId}/${costCode}`
+    const responce = await fetch(uri,{
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        method: 'GET'
+    });
+    const data = await responce.json();
+    console.log(data);
+    return data;
+}

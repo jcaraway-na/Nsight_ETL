@@ -23,29 +23,67 @@ export async function makePlotly(data,xlabel,ylabel,divlabel,well,type){
         }
     }];
 
-    var layout = {
-        xaxis:{
-            title: xlabel,
-            gridcolor: 'rgba(0,0,0,.2)'
-        },
-        yaxis:{
-            title: ylabel,
-            gridcolor: 'rgba(0,0,0,.2)'
+    if(divlabel === 'dvd'){
+        var layout = {
+            xaxis: {
+                title: xlabel,
+                gridcolor: 'rgba(0,0,0,.2)'
+            },
+            yaxis: {
+                title: ylabel,
+                gridcolor: 'rgba(0,0,0,.2)',
+                autorange: 'reversed'
+            },
 
-        },
-        showlegend: true,
-        legend:{"orentation":"h"},
-        paper_bgcolor: 'rgba(0,0,0,0)',
-        plot_bgcolor: 'rgba(0,0,0,0)',
-        height: 300,
-        margin: {
-            l: 55,
-            r: 55,
-            b: 30,
-            t: 10,
-            pad: 4
+            showlegend: true,
+            legend: {
+                x: 1,
+                xanchor: 'right',
+                y: 1
+              },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            height: 300,
+            margin: {
+                l: 55,
+                r: 55,
+                b: 30,
+                t: 10,
+                pad: 4
+            },
+
         }
     }
+    else{
+        var layout = {
+            xaxis:{
+                title: xlabel,
+                gridcolor: 'rgba(0,0,0,.2)'
+            },
+            yaxis:{
+                title: ylabel,
+                gridcolor: 'rgba(0,0,0,.2)'
+    
+            },
+            showlegend: true,
+            legend: {
+                x: 1,
+                xanchor: 'right',
+                y: 1
+              },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            height: 320,
+            margin: {
+                l: 55,
+                r: 10,
+                b: 100,
+                t: 20,
+                pad: 1
+            }
+        }
+    }
+
     var config = {responsive: true};
     Plotly.newPlot(divlabel,trace,layout,config);
 }

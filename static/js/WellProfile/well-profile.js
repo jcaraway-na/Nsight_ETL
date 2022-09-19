@@ -27,48 +27,51 @@ async function header() {
 
 async function sectionSummary(id){
     var data = await getSectionSummary(id,token);
-    console.log(data);
-    await makePlotly(data,'holeSection','avgROP','sectionsummary',well.wellName,'bar')
+
+    await makePlotly(data,'holeSection','avgROP','sectionsummary',well.wellName,'bar');
+    
     if(Object.keys(data).length!== 0){
-        document.getElementById('onbtmhrs-surf').innerHTML = data[3]['onBtmHrs'];
+
+        document.getElementById('onbtmhrs-surf').innerHTML = data[0]['onBtmHrs'];
         document.getElementById('onbtmhrs-inti').innerHTML = data[1]['onBtmHrs'];
-        document.getElementById('onbtmhrs-curve').innerHTML = data[0]['onBtmHrs'];
-        document.getElementById('onbtmhrs-prod').innerHTML = data[2]['onBtmHrs'];
+        document.getElementById('onbtmhrs-curve').innerHTML = data[2]['onBtmHrs'];
+        document.getElementById('onbtmhrs-prod').innerHTML = data[3]['onBtmHrs'];
     
-        document.getElementById('offbtmhrs-surf').innerHTML = data[3]['offBtmHrs'];
+        document.getElementById('offbtmhrs-surf').innerHTML = data[0]['offBtmHrs'];
         document.getElementById('offbtmhrs-inti').innerHTML = data[1]['offBtmHrs'];
-        document.getElementById('offbtmhrs-curve').innerHTML = data[0]['offBtmHrs'];
-        document.getElementById('offbtmhrs-prod').innerHTML = data[2]['offBtmHrs'];
+        document.getElementById('offbtmhrs-curve').innerHTML = data[2]['offBtmHrs'];
+        document.getElementById('offbtmhrs-prod').innerHTML = data[3]['offBtmHrs'];
     
-        document.getElementById('sldhrs-surf').innerHTML = data[3]['sldHrs'];
+        document.getElementById('sldhrs-surf').innerHTML = data[0]['sldHrs'];
         document.getElementById('sldhrs-inti').innerHTML = data[1]['sldHrs'];
-        document.getElementById('sldhrs-curve').innerHTML = data[0]['sldHrs'];
-        document.getElementById('sldhrs-prod').innerHTML = data[2]['sldHrs'];
+        document.getElementById('sldhrs-curve').innerHTML = data[2]['sldHrs'];
+        document.getElementById('sldhrs-prod').innerHTML = data[3]['sldHrs'];
     
-        document.getElementById('rothrs-surf').innerHTML = data[3]['rotHrs'];
+        document.getElementById('rothrs-surf').innerHTML = data[0]['rotHrs'];
         document.getElementById('rothrs-inti').innerHTML = data[1]['rotHrs'];
-        document.getElementById('rothrs-curve').innerHTML = data[0]['rotHrs'];
-        document.getElementById('rothrs-prod').innerHTML = data[2]['rotHrs'];
+        document.getElementById('rothrs-curve').innerHTML = data[2]['rotHrs'];
+        document.getElementById('rothrs-prod').innerHTML = data[3]['rotHrs'];
     
-        document.getElementById('avgrop-surf').innerHTML = data[3]['avgROP'];
+        document.getElementById('avgrop-surf').innerHTML = data[0]['avgROP'];
         document.getElementById('avgrop-inti').innerHTML = data[1]['avgROP'];
-        document.getElementById('avgrop-curve').innerHTML = data[0]['avgROP'];
-        document.getElementById('avgrop-prod').innerHTML = data[2]['avgROP'];
+        document.getElementById('avgrop-curve').innerHTML = data[2]['avgROP'];
+        document.getElementById('avgrop-prod').innerHTML = data[3]['avgROP'];
         
-        document.getElementById('avgbitrpm-surf').innerHTML = data[3]['avgBitRPM'];
+        document.getElementById('avgbitrpm-surf').innerHTML = data[0]['avgBitRPM'];
         document.getElementById('avgbitrpm-inti').innerHTML = data[1]['avgBitRPM'];
-        document.getElementById('avgbitrpm-curve').innerHTML = data[0]['avgBitRPM'];
-        document.getElementById('avgbitrpm-prod').innerHTML = data[2]['avgBitRPM'];
+        document.getElementById('avgbitrpm-curve').innerHTML = data[2]['avgBitRPM'];
+        document.getElementById('avgbitrpm-prod').innerHTML = data[3]['avgBitRPM'];
     
-        document.getElementById('avgdiffp-surf').innerHTML = data[3]['avgDiffP'];
+        document.getElementById('avgdiffp-surf').innerHTML = data[0]['avgDiffP'];
         document.getElementById('avgdiffp-inti').innerHTML = data[1]['avgDiffP'];
-        document.getElementById('avgdiffp-curve').innerHTML = data[0]['avgDiffP'];
-        document.getElementById('avgdiffp-prod').innerHTML = data[2]['avgDiffP'];
+        document.getElementById('avgdiffp-curve').innerHTML = data[2]['avgDiffP'];
+        document.getElementById('avgdiffp-prod').innerHTML = data[3]['avgDiffP'];
     
-        document.getElementById('avgdiffp-surf').innerHTML = data[3]['avgDiffP'];
+        document.getElementById('avgdiffp-surf').innerHTML = data[0]['avgDiffP'];
         document.getElementById('avgdiffp-inti').innerHTML = data[1]['avgDiffP'];
-        document.getElementById('avgdiffp-curve').innerHTML = data[0]['avgDiffP'];
-        document.getElementById('avgdiffp-prod').innerHTML = data[2]['avgDiffP'];
+        document.getElementById('avgdiffp-curve').innerHTML = data[2]['avgDiffP'];
+        document.getElementById('avgdiffp-prod').innerHTML = data[3]['avgDiffP'];
+        
     }
 
 }
@@ -139,7 +142,6 @@ async function formationDetails(id){
     }
 }
 
-
 async function dailySummaries(id){
     var data = await getDailySummary(id,token);
     // await dvdChart(data,'Subject');
@@ -166,6 +168,11 @@ async function dailySummaries(id){
     await dvdChart(data.reportDate,data.reportTimeDepth);
 
 }
+async function dvdRopPlot(){
+    var ropData = await getTimeData(wellId,token);
+    await makePlotly(ropData,'measuredDepth','ropFast','ROPFast',well.wellName,'lines')
+    await makePlotly(ropData,'cumDays','measuredDepth','dvd',well.wellName,'lines')
+}
 
 
     await header();
@@ -174,7 +181,8 @@ async function dailySummaries(id){
     await boreHole(wellId);
     await formationDetails(wellId);
     await sectionSummary(wellId);
-    await predictedTimeData();
-    await timeDataSubject(await getTimeData(wellId,token),'Subject');
+    // await predictedTimeData();
+    await dvdRopPlot();
+    // await timeDataSubject(await getTimeData(wellId,token),'Subject');
 
 

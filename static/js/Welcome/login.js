@@ -32,7 +32,10 @@ async function login() {
             GetMotorSelectionByWellId: calls['8']["uri"],
             GetRoadMapByWellId: calls['9']["uri"],
             GetSectionSummaryByWellId: calls['10']["uri"],
-            GetTimeDataByWellId: calls['11']["uri"]
+            GetTimeDataByWellId: calls['11']["uri"],
+            GetFieldEstByWellId: calls['12']["uri"],
+            GetBudgetVsFeByWellId: calls['13']["uri"],
+            GetAccountCostByWellIdCostCode: calls['14']["uri"]
         }));
         const api = JSON.parse(sessionStorage.getItem('apiCalls'));
         console.log("this is the session.")
