@@ -22,7 +22,7 @@ document.getElementById('wellid').innerHTML = well.id;
 // end Header info
 
 let surveyData = await getSurveyDataByWellId(wellId,token);
-console.log(surveyData);
+
 // Get Subject well survey data.
 async function loadSubjectSurveys(data){
     

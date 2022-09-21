@@ -72,7 +72,6 @@ export async function getWellHeader(wellId,token) {
         method: 'GET'
     });
     const data = await responce.json();
-    console.log(data);
     
     return data;
 
@@ -206,7 +205,7 @@ export async function getSectionSummary(wellId,token){
         method: 'GET'
     });
     const data = await responce.json();
-    console.log(data);
+
     return data;
 }
 
@@ -220,7 +219,7 @@ export async function getTimeData(wellId,token){
         method: 'GET'
     });
     const data = await responce.json();
-    console.log(data);
+
     return data;
 }
 
@@ -234,7 +233,7 @@ export async function getDataByWellId(wellId,token){
         method: 'GET'
     });
     const data = await responce.json();
-    console.log(data);
+
     return data;
 }
 
@@ -248,7 +247,7 @@ export async function getDataByWellIdCostCode(wellId,costCode,token){
         method: 'GET'
     });
     const data = await responce.json();
-    console.log(data);
+
     return data;
 }
 
@@ -262,6 +261,6 @@ export async function getSurveyDataByWellId(wellId,token){
         method: 'GET'
     });
     const data = await responce.json();
-    console.log(data);
+
     return data;
 }

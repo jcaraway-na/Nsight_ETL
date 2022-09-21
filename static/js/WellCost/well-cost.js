@@ -79,7 +79,7 @@ $(document).ready(function(){
     $(document).on('click','#afevsfe tbody tr',async function(){
         let CostCode = $(this).find('td:eq(0)').text();
         var costCodeData = await getDataByWellIdCostCode(wellId,CostCode,token);
-        console.log(costCodeData);
+
         $("#selectedcostcode tbody tr").remove();
         for (var i in costCodeData) {
             var row = `<tr>
