@@ -30,7 +30,7 @@
     background-color:  rgba(135, 61, 255, .5);
   }
   .login-background{
-    background-image: url(Nsight_ETL/static/images/rig3.png);
+    background-image: url(static/images/rig3.png);
     overflow: hidden;
     background-size: cover;
     background-position: center;
