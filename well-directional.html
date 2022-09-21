@@ -47,46 +47,50 @@
                     <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" href="well-directional.html">Directional</a>
                 </div>
             </div>
-            <!-- nav bar -->
-            <!-- <div style="height: 60px;" id="navbar" class="light-gry row">
-                <a style="margin-left: 2%; margin-right: 2%;" href="https://nsight-analytics.com/" target="_blank">
-                    <object data="static/images/NSIGHT_Horiz_Black.png" width="100" height="30"></object></a>
-                <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" style="text-align: center;"href="well-list.html">Home</a>
-                <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" style="text-align: center;"href="well-profile.html">E24R</a>
-                <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" href="well-cost.html">Cost</a>
-                <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" href="well-directional.html">Directional</a>
-            </div> -->
             <!-- end nav bar -->
 
             <!-- well header information -->
             <div class="row">
-                <div class="col panels-info">
+                <div class="col-sm-4 panels-info">
                     <table>
                         <tr>
                             <td style="text-align: right;" class="medium-font">Well Name:</td>
                             <td id="wellname" class="small-font"></td>
                             <td style="text-align: right;" class="medium-font">AFE No:</td>
                             <td id="afenumber" class="small-font"></td>
-                            <td style="text-align: right;" class="medium-font">State:</td>
-                            <td id="state" class="small-font"></td>
-                            <td style="text-align: right;" class="medium-font">Latitude:</td>
-                            <td id="lat" class="small-font"></td>
+
                         </tr>
                         <tr>
                             <td style="text-align: right;" class="medium-font">Lease:</td>
                             <td id="leasename" class="small-font"></td>
                             <td style="text-align: right;" class="medium-font">API No.:</td>
                             <td id="apinumber" class="small-font"></td>
-                            <td style="text-align: right;" class="medium-font">County:</td>
-                            <td id="county" class="small-font"></td>
-                            <td style="text-align: right;" class="medium-font">Longitude:</td>
-                            <td id="long" class="small-font"></td>
+
                         </tr>
                         <tr>
                             <td style="text-align: right;" class="medium-font">Target Formation:</td>
                             <td id="targetformation" class="small-font"></td>
                             <td style="text-align: right;" class="medium-font">Permit No.:</td>
                             <td id="permitnumber" class="small-font"></td>
+
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-sm-4  panels-info">
+                    <table>
+                        <tr>
+                            <td style="text-align: right;" class="medium-font">State:</td>
+                            <td id="state" class="small-font"></td>
+                            <td style="text-align: right;" class="medium-font">Latitude:</td>
+                            <td id="lat" class="small-font"></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;" class="medium-font">County:</td>
+                            <td id="county" class="small-font"></td>
+                            <td style="text-align: right;" class="medium-font">Longitude:</td>
+                            <td id="long" class="small-font"></td>
+                        </tr>
+                        <tr>
                             <td style="text-align: right;" class="medium-font">Field:</td>
                             <td id="field" class="small-font"></td>
                             <td style="text-align: right;" class="medium-font">Well ID:</td>
@@ -94,11 +98,6 @@
                         </tr>
                     </table>
                 </div>
-            </div>
-            <!-- end well header information -->
-            <div style="height: 76vh;" class="row">
-                <div class="col-sm-5">
-                    <div class="row">
                         <!-- filters -->
                         <div class="col panels-info">
                             <caption style="caption-side:top;">
@@ -106,9 +105,11 @@
                             </caption>
                         </div>
                         <!-- end of filters  -->
-                    </div>
-                    <div class="row">
-                        <div style="height: 61vh;overflow: scroll;" class="col panels">
+            </div>
+            <!-- end well header information -->
+            <div class="row">
+                <div class="col-sm-5">
+                        <div style="overflow-y: scroll;" class="col panels-planvactual">
                             <caption style="caption-side:top;">
                                 <p style="text-align: center;" class="medium-font">Approved Surveys</p>
                             </caption>
@@ -119,30 +120,19 @@
                                     <th>Inc</th>
                                     <th>Azm</th>
                                     <th>DLS</th>
-                                    <th>CL</th>
-                                    <th>Subsea</th>
-                                    <th>NorthSouth</th>
-                                    <th>EastWest</th>
-                                    <th>Northing</th>
-                                    <th>Easting</th>
-                                    <th>Lat</th>
-                                    <th>Long</th>
                                     <th>ToolFace</th>
                                     <th>VerticalSection</th>
-                                    <th>Annotation</th>
                                 </thead>
                                 <tbody>
                                 </tbody>
                             </table>
                         </div>
-                    </div>
                 </div>
                 <div class="col">
-                    <div style="height: 97%;" class="col panels">
+                    <div id="planvactual" class="col panels-planvactual">
                         <caption style="caption-side:top;">
                             <p style="text-align: center;" class="medium-font">Directional Plan vs Actual</p>
                         </caption>
-                        <div id="planvactual"></div>
                     </div>
                 </div>
             </div>

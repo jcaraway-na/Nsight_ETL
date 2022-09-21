@@ -42,15 +42,6 @@ async function loadSubjectSurveys(data){
                         <td class="medium-font">${data[i].inclination}</td>
                         <td class="medium-font">${data[i].azimuth}</td>
                         <td ${tdOver} class="medium-font">${data[i].doglegSeverity}</td>
-                        <td>${data[i].courseLength}</td>
-                        <td>${data[i].subseaDepth}</td>
-                        <td>${data[i].localNorthSouth}</td>
-                        <td>${data[i].localEastWest}</td>
-                        <td>${data[i].mapNorthing}</td>
-                        <td>${data[i].mapEasting}</td>
-                        <td>${data[i].lat}</td>
-                        <td>${data[i].long}</td>
-                        
                         <td>${data[i].toolFace}</td>
                         <td>${data[i].vertSection}</td>
                     </tr>`;

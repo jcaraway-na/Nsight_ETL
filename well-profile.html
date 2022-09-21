@@ -32,10 +32,10 @@
             <div id="navbar" class="row">
                 <div class="col-sm-2">
                     <a style="margin-left: 2%; margin-right: 2%;" href="https://nsight-analytics.com/" target="_blank">
-                        <object data="static/images/NSIGHT_Horiz_Black.png" width="100" height="30"></object></a>    
+                        <object data="static/images/NSIGHT_Horiz_Black.png" width="100" height="30"></object></a>
                 </div>
                 <div class="col">
-                    <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;"href="well-list.html">Home</a>
+                    <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" href="well-list.html">Home</a>
                 </div>
                 <div class="col">
                     <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" href="well-profile.html">E24R</a>
@@ -44,7 +44,8 @@
                     <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" href="well-cost.html">Cost</a>
                 </div>
                 <div class="col">
-                    <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" href="well-directional.html">Directional</a>
+                    <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;"
+                        href="well-directional.html">Directional</a>
                 </div>
             </div>
             <!-- nav bar -->
@@ -57,35 +58,49 @@
                 <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" href="well-directional.html">Directional</a>
             </div> -->
             <!-- end nav bar -->
+
             <!-- well header information -->
             <div class="row">
-                <div class="col panels-info">
+                <div class="col-sm-4 panels-info">
                     <table>
                         <tr>
                             <td style="text-align: right;" class="medium-font">Well Name:</td>
                             <td id="wellname" class="small-font"></td>
                             <td style="text-align: right;" class="medium-font">AFE No:</td>
                             <td id="afenumber" class="small-font"></td>
-                            <td style="text-align: right;" class="medium-font">State:</td>
-                            <td id="state" class="small-font"></td>
-                            <td style="text-align: right;" class="medium-font">Latitude:</td>
-                            <td id="lat" class="small-font"></td>
+
                         </tr>
                         <tr>
                             <td style="text-align: right;" class="medium-font">Lease:</td>
                             <td id="leasename" class="small-font"></td>
                             <td style="text-align: right;" class="medium-font">API No.:</td>
                             <td id="apinumber" class="small-font"></td>
-                            <td style="text-align: right;" class="medium-font">County:</td>
-                            <td id="county" class="small-font"></td>
-                            <td style="text-align: right;" class="medium-font">Longitude:</td>
-                            <td id="long" class="small-font"></td>
+
                         </tr>
                         <tr>
                             <td style="text-align: right;" class="medium-font">Target Formation:</td>
                             <td id="targetformation" class="small-font"></td>
                             <td style="text-align: right;" class="medium-font">Permit No.:</td>
                             <td id="permitnumber" class="small-font"></td>
+
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-sm-4  panels-info">
+                    <table>
+                        <tr>
+                            <td style="text-align: right;" class="medium-font">State:</td>
+                            <td id="state" class="small-font"></td>
+                            <td style="text-align: right;" class="medium-font">Latitude:</td>
+                            <td id="lat" class="small-font"></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;" class="medium-font">County:</td>
+                            <td id="county" class="small-font"></td>
+                            <td style="text-align: right;" class="medium-font">Longitude:</td>
+                            <td id="long" class="small-font"></td>
+                        </tr>
+                        <tr>
                             <td style="text-align: right;" class="medium-font">Field:</td>
                             <td id="field" class="small-font"></td>
                             <td style="text-align: right;" class="medium-font">Well ID:</td>
@@ -93,17 +108,18 @@
                         </tr>
                     </table>
                 </div>
-            </div>
-            <!-- filters -->
-            <div class="row">
+                <!-- filters -->
                 <div class="col panels-info">
                     <caption style="caption-side:top;">
                         <p style="text-align: left;" class="medium-font">Filters</p>
                     </caption>
-                    <select style="color: white;" id="selDataset" class="btn purple dropdown-toggle" onchange="optionChanged(this.value)"></select>
+                    <select style="color: white;" id="selDataset" class="btn purple dropdown-toggle"
+                        onchange="optionChanged(this.value)"></select>
                 </div>
-            </div>   
-            <!-- end of filters  -->
+                <!-- end of filters  -->
+            </div>
+            <!-- end well header information -->
+
             <!-- Summary Table and DVD -->
             <div class="row">
                 <div class="col panels">
@@ -198,64 +214,9 @@
                                 <td id="avgmse-prod" class="small-font"></td>
                             </tr>
                         </tbody>
-                        
+
                     </table>
                     <br></br>
-                </div>
-            </div>
-            <div class="row">
-                <div style="min-height: 350px;" class="col  panels">
-                    <caption style="caption-side:top;">
-                        <p style="text-align: left;" class="medium-font">Daily Summaries</p>
-                    </caption>
-                    <div style="overflow-y: scroll; max-height: 350px;">
-                        <table id="daily-summaries" class="table table-condensed table-wrapper">
-                            <thead>
-                                <th>Report Date</th>
-                                <th>AM Depth</th>
-                                <th>Footage Drilled</th>
-                                <th>Drill Hrs</th>
-                                <th>Avg ROP</th>
-                                <th>Avg WOB</th>
-                                <th>Avg Diff</th>
-                                <th>Avg FlowIn</th>
-                                <th>Avg Bit RPM</th>
-                                <th>TVD</th>
-                                <th>Inc</th>
-                                <th>Azm</th>
-                            </thead>
-                            <tbody>
-    
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <!-- Casing Design -->
-            <div class="row">
-                <div class="col panels">
-                    <caption style="caption-side:top;">
-                        <p style="text-align: left;" class="medium-font">Casing Design</p>
-                    </caption>
-                    <div style="overflow-y: scroll; max-height: 350px;">
-                        <table id="casing-design" class="table table-condensed table-wrapper">
-                            <thead>
-                                <th>Hole Section</th>
-                                <th>MD</th>
-                                <th>TVD</th>
-                                <th>Item</th>
-                                <th>OD</th>
-                                <th>ID</th>
-                                <th>Weight</th>
-                                <th>Grade</th>
-                                <th>Threads</th>
-                                <th>Connection</th>
-                                <th>Setting Depth</th>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
             </div>
             <!-- Formation data -->
@@ -293,6 +254,63 @@
                     </div>
                 </div>
             </div>
+            <!-- Daily summaries -->
+            <div class="row">
+                <div style="min-height: 350px;" class="col  panels">
+                    <caption style="caption-side:top;">
+                        <p style="text-align: left;" class="medium-font">Daily Summaries</p>
+                    </caption>
+                    <div style="overflow-y: scroll; max-height: 350px;">
+                        <table id="daily-summaries" class="table table-condensed table-wrapper">
+                            <thead>
+                                <th>Report Date</th>
+                                <th>AM Depth</th>
+                                <th>Footage Drilled</th>
+                                <th>Drill Hrs</th>
+                                <th>Avg ROP</th>
+                                <th>Avg WOB</th>
+                                <th>Avg Diff</th>
+                                <th>Avg FlowIn</th>
+                                <th>Avg Bit RPM</th>
+                                <th>TVD</th>
+                                <th>Inc</th>
+                                <th>Azm</th>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Casing Design -->
+            <div class="row">
+                <div class="col panels">
+                    <caption style="caption-side:top;">
+                        <p style="text-align: left;" class="medium-font">Casing Design</p>
+                    </caption>
+                    <div style="overflow-y: scroll; max-height: 350px;">
+                        <table id="casing-design" class="table table-condensed table-wrapper">
+                            <thead>
+                                <th>Hole Section</th>
+                                <th>MD</th>
+                                <th>TVD</th>
+                                <th>Item</th>
+                                <th>OD</th>
+                                <th>ID</th>
+                                <th>Weight</th>
+                                <th>Grade</th>
+                                <th>Threads</th>
+                                <th>Connection</th>
+                                <th>Setting Depth</th>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
             <!-- Bit Record -->
             <div class="row">
                 <div class="col panels">
@@ -345,7 +363,7 @@
     <script type="module" src="static/js/WellProfile/well-profile.js"></script>
     <script type="module" src="static/js/Analytics/charts.js"></script>
     <script type="module" src="static/js/global-chart.js"></script>
-    
+
 </body>
 
 </html>
