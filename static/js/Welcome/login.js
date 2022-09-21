@@ -35,7 +35,8 @@ async function login() {
             GetTimeDataByWellId: calls['11']["uri"],
             GetFieldEstByWellId: calls['12']["uri"],
             GetBudgetVsFeByWellId: calls['13']["uri"],
-            GetAccountCostByWellIdCostCode: calls['14']["uri"]
+            GetAccountCostByWellIdCostCode: calls['14']["uri"],
+            GetSurveysByWellId: calls['15']["uri"]
         }));
         const api = JSON.parse(sessionStorage.getItem('apiCalls'));
         console.log("this is the session.")

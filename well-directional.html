@@ -32,10 +32,13 @@
             <div style="height: 60px;" id="navbar" class="light-gry row">
                 <a style="margin-left: 2%; margin-right: 2%;" href="https://nsight-analytics.com/" target="_blank">
                     <object data="static/images/NSIGHT_Horiz_Black.png" width="100" height="30"></object></a>
-                <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" style="text-align: center;"href="well-list.html">Home</a>
-                <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" style="text-align: center;"href="well-profile.html">E24R</a>
+                <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" style="text-align: center;"
+                    href="well-list.html">Home</a>
+                <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" style="text-align: center;"
+                    href="well-profile.html">E24R</a>
                 <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" href="well-cost.html">Cost</a>
-                <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" href="well-directional.html">Directional</a>
+                <a style=" margin-left: 2%; margin-right: 2%; margin-top: 1%;"
+                    href="well-directional.html">Directional</a>
             </div>
             <!-- end nav bar -->
 
@@ -77,56 +80,54 @@
                 </div>
             </div>
             <!-- end well header information -->
-            <!-- filters -->
-            <!-- <div class="row">
-                <div class="col panels-info">
-                    <caption style="caption-side:top;">
-                        <p style="text-align: left;" class="medium-font">Filters</p>
-                    </caption>
-                </div>
-            </div>       -->
-            <!-- end of filters  -->
-            <div class="row">
-                <div class="col-sm-5 panels">
-                    <caption style="caption-side:top;">
-                        <p style="text-align: center;" class="medium-font">AFE vs. Field Est.</p>
-                    </caption>
-                    <div id="afevfe"></div>
-                </div>
-                <div class="col panels ">
-                    <caption style="caption-side:top;">
-                        <p style="text-align: center;" class="medium-font">AFE Usage</p>
-                    </caption>
-                    <div style="height:390px;overflow:auto;">
-                        <table id="afevsfe" class="table table-condensed table-wrapper">
-                            <thead>
-                                <th>Cost Code</th>
-                                <th>Description</th>
-                                <th>Field Est.</th>
-                                <th>AFE Amount</th>
-                                <th>% Used</th>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
+            <div style="height: 76vh;" class="row">
+                <div class="col-sm-5">
+                    <div class="row">
+                        <!-- filters -->
+                        <div class="col panels-info">
+                            <caption style="caption-side:top;">
+                                <p style="text-align: left;" class="medium-font">Filters</p>
+                            </caption>
+                        </div>
+                        <!-- end of filters  -->
+                    </div>
+                    <div class="row">
+                        <div style="height: 61vh;overflow: scroll;" class="col panels">
+                            <caption style="caption-side:top;">
+                                <p style="text-align: center;" class="medium-font">Approved Surveys</p>
+                            </caption>
+                            <table id="approvedsurveys" class="table table-condensed table-wrapper">
+                                <thead>
+                                    <th>MD</th>
+                                    <th>TVD</th>
+                                    <th>Inc</th>
+                                    <th>Azm</th>
+                                    <th>DLS</th>
+                                    <th>CL</th>
+                                    <th>Subsea</th>
+                                    <th>NorthSouth</th>
+                                    <th>EastWest</th>
+                                    <th>Northing</th>
+                                    <th>Easting</th>
+                                    <th>Lat</th>
+                                    <th>Long</th>
+                                    <th>ToolFace</th>
+                                    <th>VerticalSection</th>
+                                    <th>Annotation</th>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div id="costcodebar" class="col-sm-5 panels"></div>
-                <div style="overflow-y: scroll;" class="col panels">
-                    <table id="selectedcostcode" class="table table-condensed table-wrapper">
-                        <thead>
-                            <th>Report Date</th>
-                            <th>Primary Code</th>
-                            <th>Sub Code</th>
-                            <th>Description</th>
-                            <th>Amount $</th>
-                            <th>Vendor</th>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+                <div class="col">
+                    <div style="height: 97%;" class="col panels">
+                        <caption style="caption-side:top;">
+                            <p style="text-align: center;" class="medium-font">Directional Plan vs Actual</p>
+                        </caption>
+                        <div id="planvactual"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -135,7 +136,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
     <script src="static/js/plotOffset.js"></script>
     <script type="module" src="static/js/ApiCalls/calls.js"></script>
-    <script type="module" src="static/js/WellCost/well-cost.js"></script>
+    <script type="module" src="static/js/WellDirectional/well-surveys.js"></script>
     <script type="module" src="static/js/Analytics/charts.js"></script>
 
 </body>

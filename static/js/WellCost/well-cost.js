@@ -29,8 +29,8 @@ var formatter = new Intl.NumberFormat('en-US', {
 
 async function loadAfeUsage(wellId){
     var costVarianceData = await getDataByWellId(wellId,token);
-    let over = 'style="color: white; background-color:rgba(255,0,0,.8);"'
-    let under = 'style="color: white; background-color:rgba(8,176,26,.8);"'
+    let over = 'style="color: white; background-color:rgba(255,0,0,.7);"'
+    let under = 'style="color: white; background-color:rgba(8,176,26,.7);"'
     for (var i in costVarianceData) {
         var tdOver;
         if(costVarianceData[i].usage > 100){
@@ -52,11 +52,29 @@ async function loadAfeUsage(wellId){
     }
     await makePlotly(costVarianceData,'costCode','estAmount','afevfe',well.wellName,'bar');
     await addToPlotly(costVarianceData,'costCode','afeAmount','afevfe',well.wellName+" AFE",'bar');
+
+    let CostCode = $("#afevsfe").find('td:eq(0)').text();
+    var costCodeData = await getDataByWellIdCostCode(wellId,CostCode,token);
+
+    $("#selectedcostcode tbody tr").remove();
+    for (var i in costCodeData) {
+        var row = `<tr>
+                        <td class="medium-font">${costCodeData[i].reportDate}</td>
+                        <td>${costCodeData[i].primaryCode}</td>
+                        <td>${costCodeData[i].subCode}</td>
+                        <td>${costCodeData[i].description}</td>
+                        <td class="medium-font">${formatter.format(costCodeData[i].estAmount)}</td>
+                        <td>${costCodeData[i].vendor}</td>
+                    </tr>`;
+        var table = $(`#selectedcostcode`);
+        table.append(row);
+    }
+    await makePlotly(costCodeData,'reportDate','estAmount','costcodebar',well.wellName,'bar');
 }
 
 header();
 await loadAfeUsage(wellId);
-
+// Click on row in AFE Usage Table, calls selected cost code and displays it to the table below
 $(document).ready(function(){
     $(document).on('click','#afevsfe tbody tr',async function(){
         let CostCode = $(this).find('td:eq(0)').text();
@@ -75,5 +93,10 @@ $(document).ready(function(){
             var table = $(`#selectedcostcode`);
             table.append(row);
         }
+
+        costCodeData = await getDataByWellIdCostCode(wellId,CostCode,token);
+    
+        Plotly.deleteTraces('costcodebar',0);
+        await makePlotly(costCodeData,'reportDate','estAmount','costcodebar',well.wellName,'bar');
     });
 });

@@ -6,6 +6,9 @@ const autho = JSON.parse(sessionStorage.getItem('token'));
 const token = autho.token;
 const well = JSON.parse(sessionStorage.getItem('selectedWell'));
 const wellId = well.id;
+const offsetWells = JSON.parse(sessionStorage.getItem('wellList'));
+// const offset = well.id;
+console.log(offsetWells);
 
 // var wellHeader = await getWellHeader(wellId,token);
 
@@ -174,6 +177,12 @@ async function dvdRopPlot(){
     await makePlotly(ropData,'cumDays','measuredDepth','dvd',well.wellName,'lines')
 }
 
+async function addDvdRopPlot(id){
+    var ropData = await getTimeData(id,token);
+    await addToPlotly(ropData,'measuredDepth','ropFast','ROPFast',well.wellName,'lines')
+    await addToPlotly(ropData,'cumDays','measuredDepth','dvd',well.wellName,'lines')
+}
+
 
     await header();
     await dailySummaries(wellId);
@@ -181,8 +190,6 @@ async function dvdRopPlot(){
     await boreHole(wellId);
     await formationDetails(wellId);
     await sectionSummary(wellId);
-    // await predictedTimeData();
     await dvdRopPlot();
-    // await timeDataSubject(await getTimeData(wellId,token),'Subject');
 
 

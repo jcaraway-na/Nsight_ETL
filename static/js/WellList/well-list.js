@@ -4,7 +4,7 @@ const token = autho.token;
 
 async function init() {
     var data = await getAllWellHeaders(token);
-
+    sessionStorage.setItem('wellList',JSON.stringify(data));
     for (var i in data) {
         var row = `<tr>
                     <td>${data[i].wellId}</td>
@@ -24,8 +24,6 @@ async function init() {
 
         table.append(row);
     }
-    console.log("Got the data below back");
-    console.log(data)
 }
 
 $(document).ready(function(){

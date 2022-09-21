@@ -54,6 +54,37 @@ export async function makePlotly(data,xlabel,ylabel,divlabel,well,type){
 
         }
     }
+    else if(divlabel==='costcodebar'){
+        var layout = {
+            xaxis: {
+                title: xlabel,
+                gridcolor: 'rgba(0,0,0,.2)'
+            },
+            yaxis: {
+                title: ylabel,
+                gridcolor: 'rgba(0,0,0,.2)',
+            },
+
+            showlegend: true,
+            legend: {
+                x: 1,
+                xanchor: 'right',
+                y: 1
+              },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            height: 380,
+            margin: {
+                l: 55,
+                r: 55,
+                b: 100,
+                t: 50,
+                pad:4
+                
+            },
+
+        }
+    }
     else{
         var layout = {
             xaxis:{

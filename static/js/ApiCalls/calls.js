@@ -251,3 +251,17 @@ export async function getDataByWellIdCostCode(wellId,costCode,token){
     console.log(data);
     return data;
 }
+
+export async function getSurveyDataByWellId(wellId,token){
+    var uri = `${api.GetSurveysByWellId}${wellId}`
+    const responce = await fetch(uri,{
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        method: 'GET'
+    });
+    const data = await responce.json();
+    console.log(data);
+    return data;
+}
