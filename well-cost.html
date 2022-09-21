@@ -28,15 +28,33 @@
 
     <div class="wrapper">
         <div class="container-fluid">
+            <div id="navbar" class="row">
+                <div class="col-sm-2">
+                    <a style="margin-left: 2%; margin-right: 2%;" href="https://nsight-analytics.com/" target="_blank">
+                        <object data="static/images/NSIGHT_Horiz_Black.png" width="100" height="30"></object></a>    
+                </div>
+                <div class="col">
+                    <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;"href="well-list.html">Home</a>
+                </div>
+                <div class="col">
+                    <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" href="well-profile.html">E24R</a>
+                </div>
+                <div class="col">
+                    <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" href="well-cost.html">Cost</a>
+                </div>
+                <div class="col">
+                    <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" href="well-directional.html">Directional</a>
+                </div>
+            </div>
             <!-- nav bar -->
-            <div style="height: 60px;" id="navbar" class="light-gry row">
+            <!-- <div style="height: 60px;" id="navbar" class="light-gry row">
                 <a style="margin-left: 2%; margin-right: 2%;" href="https://nsight-analytics.com/" target="_blank">
                     <object data="static/images/NSIGHT_Horiz_Black.png" width="100" height="30"></object></a>
                 <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" style="text-align: center;"href="well-list.html">Home</a>
                 <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" style="text-align: center;"href="well-profile.html">E24R</a>
                 <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" href="well-cost.html">Cost</a>
                 <a style="margin-left: 2%; margin-right: 2%; margin-top: 1%;" href="well-directional.html">Directional</a>
-            </div>
+            </div> -->
             <!-- end nav bar -->
 
             <!-- well header information -->
@@ -77,15 +95,6 @@
                 </div>
             </div>
             <!-- end well header information -->
-            <!-- filters -->
-            <!-- <div class="row">
-                <div class="col panels-info">
-                    <caption style="caption-side:top;">
-                        <p style="text-align: left;" class="medium-font">Filters</p>
-                    </caption>
-                </div>
-            </div>       -->
-            <!-- end of filters  -->
             <div class="row">
                 <div class="col-sm-5 panels">
                     <caption style="caption-side:top;">
@@ -133,7 +142,6 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
-    <script src="static/js/plotOffset.js"></script>
     <script type="module" src="static/js/ApiCalls/calls.js"></script>
     <script type="module" src="static/js/WellCost/well-cost.js"></script>
     <script type="module" src="static/js/Analytics/charts.js"></script>

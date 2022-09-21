@@ -37,6 +37,15 @@
     height: 80px;
     margin: 1%;
 }
+.panels-nav {
+    background: linear-gradient(rgb(255, 255, 255, .8), rgba(252, 252, 252, 0.5));
+    box-shadow: -5px -5px 8px rgb(221, 221, 221, .8),
+        5px 5px 8px rgba(124, 124, 125, 0.2);
+    border-radius: 15px;
+    overflow: hidden;
+    height: 50px;
+    margin: 1%;
+}
 
 .panels-well-list {
     background: linear-gradient(rgb(255, 255, 255, .8), rgba(252, 252, 252, 0.5));

@@ -5,7 +5,6 @@ async function login() {
     let password = document.getElementById("password").value;
 
     const token = await postLogin(username, password);
-    console.log(token);
 
     if(token['statusCode'] === 200){
 
@@ -19,7 +18,6 @@ async function login() {
         const tok = JSON.parse(sessionStorage.getItem('token'));
         var calls = await getApiByOrgId(tok.orgid,tok.token);
 
-        console.log(calls);
         sessionStorage.setItem('apiCalls',JSON.stringify({
             GetAllWellHeaders: calls['0']['uri'],
             GetWellHeaderById: calls['1']["uri"],
@@ -39,8 +37,7 @@ async function login() {
             GetSurveysByWellId: calls['15']["uri"]
         }));
         const api = JSON.parse(sessionStorage.getItem('apiCalls'));
-        console.log("this is the session.")
-        console.log(api);
+
         window.location.href="well-list.html";
     }
     else{
