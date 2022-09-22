@@ -15,5 +15,6 @@
   tr:hover {
     background-color: rgba(135, 61, 255, 1);
     color: white;
-    cursor: pointer;
+    cursor: pointer; 
+    
   }
