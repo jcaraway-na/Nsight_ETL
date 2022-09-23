@@ -9,8 +9,13 @@
 
 
   th {
-    background: rgba(135, 61, 255, .5);
+    background: rgb(167, 112, 255);
+    color: white;
+    position: sticky;
+    top: 0; 
+    box-shadow: 0 2px 2px -1px rgba(255, 255, 255, 0.4);
   }
+
 
   tr:hover {
     background-color: rgba(135, 61, 255, 1);
