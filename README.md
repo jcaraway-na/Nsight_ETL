@@ -26,14 +26,13 @@ The following deliverables are required:
 
 >
 
-<table>
-  <tbody>
-    <tr>
-      <td></td>
-      <td><img src="https://github.com/jcaraway-na/Nsight_ETL/blob/main/resources/screenshots/login_gif.gif"></td>
-    </tr>
-  </tbody>
-</table>
+<div style = "overflow: hidden;" class = "wrapper">
+  <div style = "width: 300px;"><img src="https://github.com/jcaraway-na/Nsight_ETL/blob/main/resources/screenshots/nsight_login.png"></div>
+  <br></br>
+  <div><h3>Working example...</h3></div>
+  <div  style = "overflow: hidden;"><img src="https://github.com/jcaraway-na/Nsight_ETL/blob/main/resources/screenshots/login_gif.gif"></div>
+</div>
+
 ---
 
 ### Deliverable 3: Provide valuable front end visualizations to the client
