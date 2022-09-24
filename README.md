@@ -1,6 +1,6 @@
 # Nsight_ETL
 
-## Try me: https://jcaraway-na.github.io/UFOs/
+## Try me: 
 
 ## BACKGROUND
 
