@@ -25,6 +25,15 @@ The following deliverables are required:
 ### Deliverable 2: Secure login with token authentication and secure API calls that require authorization.
 
 >
+
+<table>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><img src="https://github.com/jcaraway-na/Nsight_ETL/blob/main/resources/screenshots/login_gif.gif"></td>
+    </tr>
+  </tbody>
+</table>
 ---
 
 ### Deliverable 3: Provide valuable front end visualizations to the client
