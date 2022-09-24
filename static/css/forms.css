@@ -36,3 +36,7 @@
     background-position: center;
     opacity: 1;
   }
+
+  .login-form-hide{
+    display: none;
+  }

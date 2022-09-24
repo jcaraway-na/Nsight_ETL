@@ -1,8 +1,12 @@
 import { postLogin,getApiByOrgId } from '../ApiCalls/calls.js'
+let loader = document.querySelector(".loader");
+loader.style.display = "none";
 
 async function login() {
+    loader.style.display = "";
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
+
 
     const token = await postLogin(username, password);
 
@@ -38,12 +42,14 @@ async function login() {
         }));
         const api = JSON.parse(sessionStorage.getItem('apiCalls'));
 
+
+
         window.location.href="well-list.html";
     }
     else{
+        loader.style.display = "none";
         alert("Bad login.");
     }
 }
-
 
 document.getElementById('login-btn').addEventListener('click',login);

@@ -1,6 +1,10 @@
-import { getBitRecord, getSectionSummary, getTimeData, getBoreHole,getFormation, getDailySummary, init } from '../ApiCalls/calls.js'
-import { dvdChart,predictedTimeData,timeDataSubject } from '../Analytics/charts.js'
-import { makePlotly, addToPlotly} from '../global-chart.js';
+import { getBitRecord, getSectionSummary, getTimeData, getBoreHole, getFormation, getDailySummary, init } from '../ApiCalls/calls.js'
+import { dvdChart, predictedTimeData, timeDataSubject } from '../Analytics/charts.js'
+import { makePlotly, addToPlotly } from '../global-chart.js';
+let loader = document.querySelector(".loader-big");
+loader.style.display = "flex";
+loader.style.height = '100vh'
+loader.style.width = '100vw'
 
 const autho = JSON.parse(sessionStorage.getItem('token'));
 const token = autho.token;
@@ -28,58 +32,58 @@ async function header() {
     document.getElementById('wellid').innerHTML = well.id;
 }
 
-async function sectionSummary(id){
-    var data = await getSectionSummary(id,token);
+async function sectionSummary(id) {
+    var data = await getSectionSummary(id, token);
 
-    await makePlotly(data,'holeSection','avgROP','sectionsummary',well.wellName,'bar');
-    
-    if(Object.keys(data).length!== 0){
+    await makePlotly(data, 'holeSection', 'avgROP', 'sectionsummary', well.wellName, 'bar');
+
+    if (Object.keys(data).length !== 0) {
 
         document.getElementById('onbtmhrs-surf').innerHTML = data[0]['onBtmHrs'];
         document.getElementById('onbtmhrs-inti').innerHTML = data[1]['onBtmHrs'];
         document.getElementById('onbtmhrs-curve').innerHTML = data[2]['onBtmHrs'];
         document.getElementById('onbtmhrs-prod').innerHTML = data[3]['onBtmHrs'];
-    
+
         document.getElementById('offbtmhrs-surf').innerHTML = data[0]['offBtmHrs'];
         document.getElementById('offbtmhrs-inti').innerHTML = data[1]['offBtmHrs'];
         document.getElementById('offbtmhrs-curve').innerHTML = data[2]['offBtmHrs'];
         document.getElementById('offbtmhrs-prod').innerHTML = data[3]['offBtmHrs'];
-    
+
         document.getElementById('sldhrs-surf').innerHTML = data[0]['sldHrs'];
         document.getElementById('sldhrs-inti').innerHTML = data[1]['sldHrs'];
         document.getElementById('sldhrs-curve').innerHTML = data[2]['sldHrs'];
         document.getElementById('sldhrs-prod').innerHTML = data[3]['sldHrs'];
-    
+
         document.getElementById('rothrs-surf').innerHTML = data[0]['rotHrs'];
         document.getElementById('rothrs-inti').innerHTML = data[1]['rotHrs'];
         document.getElementById('rothrs-curve').innerHTML = data[2]['rotHrs'];
         document.getElementById('rothrs-prod').innerHTML = data[3]['rotHrs'];
-    
+
         document.getElementById('avgrop-surf').innerHTML = data[0]['avgROP'];
         document.getElementById('avgrop-inti').innerHTML = data[1]['avgROP'];
         document.getElementById('avgrop-curve').innerHTML = data[2]['avgROP'];
         document.getElementById('avgrop-prod').innerHTML = data[3]['avgROP'];
-        
+
         document.getElementById('avgbitrpm-surf').innerHTML = data[0]['avgBitRPM'];
         document.getElementById('avgbitrpm-inti').innerHTML = data[1]['avgBitRPM'];
         document.getElementById('avgbitrpm-curve').innerHTML = data[2]['avgBitRPM'];
         document.getElementById('avgbitrpm-prod').innerHTML = data[3]['avgBitRPM'];
-    
+
         document.getElementById('avgdiffp-surf').innerHTML = data[0]['avgDiffP'];
         document.getElementById('avgdiffp-inti').innerHTML = data[1]['avgDiffP'];
         document.getElementById('avgdiffp-curve').innerHTML = data[2]['avgDiffP'];
         document.getElementById('avgdiffp-prod').innerHTML = data[3]['avgDiffP'];
-    
+
         document.getElementById('avgdiffp-surf').innerHTML = data[0]['avgDiffP'];
         document.getElementById('avgdiffp-inti').innerHTML = data[1]['avgDiffP'];
         document.getElementById('avgdiffp-curve').innerHTML = data[2]['avgDiffP'];
         document.getElementById('avgdiffp-prod').innerHTML = data[3]['avgDiffP'];
-        
+
     }
 
 }
 async function bitRecord(id) {
-    var bits = await getBitRecord(id,token);
+    var bits = await getBitRecord(id, token);
 
     for (var i in bits) {
         var row = `<tr>
@@ -106,7 +110,7 @@ async function bitRecord(id) {
 }
 
 async function boreHole(id) {
-    var data = await getBoreHole(id,token);
+    var data = await getBoreHole(id, token);
 
     for (var i in data) {
         var row = `<tr>
@@ -128,8 +132,8 @@ async function boreHole(id) {
     }
 }
 
-async function formationDetails(id){
-    var data = await getFormation(id,token);
+async function formationDetails(id) {
+    var data = await getFormation(id, token);
 
     for (var i in data) {
         var row = `<tr>
@@ -145,8 +149,8 @@ async function formationDetails(id){
     }
 }
 
-async function dailySummaries(id){
-    var data = await getDailySummary(id,token);
+async function dailySummaries(id) {
+    var data = await getDailySummary(id, token);
     // await dvdChart(data,'Subject');
     for (var i in data) {
         var row = `<tr>
@@ -168,28 +172,31 @@ async function dailySummaries(id){
         table.append(row);
     }
 
-    await dvdChart(data.reportDate,data.reportTimeDepth);
+    await dvdChart(data.reportDate, data.reportTimeDepth);
 
 }
-async function dvdRopPlot(){
-    var ropData = await getTimeData(wellId,token);
-    await makePlotly(ropData,'measuredDepth','ropFast','ROPFast',well.wellName,'lines')
-    await makePlotly(ropData,'cumDays','measuredDepth','dvd',well.wellName,'lines')
+async function dvdRopPlot() {
+    var ropData = await getTimeData(wellId, token);
+    await makePlotly(ropData, 'measuredDepth', 'ropFast', 'ROPFast', well.wellName, 'lines')
+    await makePlotly(ropData, 'cumDays', 'measuredDepth', 'dvd', well.wellName, 'lines')
 }
 
-async function addDvdRopPlot(id){
-    var ropData = await getTimeData(id,token);
-    await addToPlotly(ropData,'measuredDepth','ropFast','ROPFast',well.wellName,'lines')
-    await addToPlotly(ropData,'cumDays','measuredDepth','dvd',well.wellName,'lines')
+async function addDvdRopPlot(id) {
+    var ropData = await getTimeData(id, token);
+    await addToPlotly(ropData, 'measuredDepth', 'ropFast', 'ROPFast', well.wellName, 'lines')
+    await addToPlotly(ropData, 'cumDays', 'measuredDepth', 'dvd', well.wellName, 'lines')
 }
 
 
-    await header();
-    await dailySummaries(wellId);
-    await bitRecord(wellId);
-    await boreHole(wellId);
-    await formationDetails(wellId);
-    await sectionSummary(wellId);
-    await dvdRopPlot();
+await header();
+await dailySummaries(wellId);
+await bitRecord(wellId);
+await boreHole(wellId);
+await formationDetails(wellId);
+await sectionSummary(wellId);
+await dvdRopPlot();
+loader.style.display = "none";
+loader.style.height = '0vh'
+loader.style.width = '0vw'
 
 

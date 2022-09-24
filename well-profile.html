@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="static/css/forms.css">
     <link rel="stylesheet" href="static/css/nav.css">
     <link rel="stylesheet" href="static/css/tables.css">
+    <link rel="stylesheet" href="static/css/loading.css">
     <!-- include components -->
     <script src="https://unpkg.com/d3@7.6.1/dist/d3.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
@@ -25,9 +26,9 @@
 </head>
 
 <body class="light-gry">
-
     <div class="wrapper">
         <div class="container-fluid">
+
             <!-- nav bar -->
             <div id="navbar" class="row">
                 <div class="col-sm-2">
@@ -113,6 +114,7 @@
 
             <!-- Summary Table and DVD -->
             <div class="row">
+
                 <div class="col panels">
                     <caption style="caption-side:top;">
                         <p style="text-align: left;" class="medium-font">Days vs Depth</p>
@@ -210,16 +212,16 @@
                     <br></br>
                 </div>
             </div>
-                        <!-- Drilling Data -->
-                        <div class="row">
-                            <div class="col panels">
-                                <caption style="caption-side:top;">
-                                    <p style="text-align: left;" class="medium-font">ROP Trace</p>
-                                </caption>
-                                <div id="ROPFast">
-                                </div>
-                            </div>
-                        </div>
+            <!-- Drilling Data -->
+            <div class="row">
+                <div class="col panels">
+                    <caption style="caption-side:top;">
+                        <p style="text-align: left;" class="medium-font">ROP Trace</p>
+                    </caption>
+                    <div id="ROPFast">
+                    </div>
+                </div>
+            </div>
             <!-- Formation data -->
             <div class="row">
                 <div id="dvd" class="col-sm-4 panels">
@@ -342,10 +344,9 @@
                             </tbody>
                         </table>
                     </div>
-
+                    <div class="loader-big"></div>
                 </div>
             </div>
-
         </div>
     </div>
 

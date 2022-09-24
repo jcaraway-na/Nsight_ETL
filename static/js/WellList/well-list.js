@@ -1,6 +1,10 @@
 import { getAllWellHeaders } from '../ApiCalls/calls.js'
 const autho = JSON.parse(sessionStorage.getItem('token'));
 const token = autho.token;
+let loader = document.querySelector(".loader-big");
+loader.style.display = "flex";
+loader.style.height = '100vh'
+loader.style.width = '100vw'
 
 async function init() {
     var data = await getAllWellHeaders(token);
@@ -61,5 +65,7 @@ $(document).ready(function(){
 });
 
 init();
-
+loader.style.display = "none";
+loader.style.height = '0vh'
+loader.style.width = '0vw'
 

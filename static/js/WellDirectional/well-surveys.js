@@ -1,6 +1,11 @@
 import { getSurveyDataByWellId } from '../ApiCalls/calls.js';
 import { makePlotlySurvey, addToPlotly } from '../global-chart.js';
 
+let loader = document.querySelector(".loader-big");
+loader.style.display = "flex";
+loader.style.height = '100vh'
+loader.style.width = '100vw'
+
 const autho = JSON.parse(sessionStorage.getItem('token'));
 const token = autho.token;
 const well = JSON.parse(sessionStorage.getItem('selectedWell'));
@@ -118,3 +123,7 @@ async function loadSubjectSurveys(data){
 
 await loadSubjectSurveys(surveyData);
 await makePlotlySurvey(surveyData);
+
+loader.style.display = "none";
+loader.style.height = '0vh'
+loader.style.width = '0vw'
