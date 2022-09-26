@@ -35,4 +35,9 @@ The following deliverables are required:
 
 ### Deliverable 3: Provide valuable front end visualizations to the client
 
->
+> Well Profile page provides Drilling Performance values, along with bit records, daily summaries, and formation info.
+
+<div style = "overflow: hidden;" class = "wrapper">
+  <div><h3>Working example...</h3></div>
+  <div  style = "overflow: hidden;"><img src="https://github.com/jcaraway-na/Nsight_ETL/blob/main/resources/screenshots/well_profile.gif"></div>
+</div>
