@@ -41,3 +41,10 @@ The following deliverables are required:
   <div><h3>Working example...</h3></div>
   <div  style = "overflow: hidden;"><img src="https://github.com/jcaraway-na/Nsight_ETL/blob/main/resources/screenshots/well_profile.gif"></div>
 </div>
+
+> Directional page provides information on approved surveys and plots a 3D interactive image of the wellbore.
+
+<div style = "overflow: hidden;" class = "wrapper">
+  <div><h3>Working example...</h3></div>
+  <div  style = "overflow: hidden;"><img src="https://github.com/jcaraway-na/Nsight_ETL/blob/main/resources/screenshots/directional.gif"></div>
+</div>
