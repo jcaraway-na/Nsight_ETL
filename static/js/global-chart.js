@@ -146,6 +146,7 @@ export async function addToPlotly(data,xlabel,ylabel,divlabel,well,type){
 }
 
 export async function makePlotlySurvey(data){
+
     var i, r;
     var x = [];
     var y = [];
@@ -154,6 +155,7 @@ export async function makePlotlySurvey(data){
 
     for(i = 0; i < data.length; i++){
         // r = 10 * Math.cos(i/10);
+        if(data[i].annotation === "ACTUAL")
         x.push(data[i].localEastWest);
         y.push(data[i].localNorthSouth);
         z.push(-1*data[i].tvd);
@@ -166,6 +168,7 @@ export async function makePlotlySurvey(data){
         x: x,
         y: y,
         z: z,
+        name:'Actual',
         line: {
           width: 10,
           color: c,
@@ -214,6 +217,7 @@ export async function addToPlotlySurvey(data){
     var c = [];
 
     for(i = 0; i < data.length; i++){
+        if(data[i].annotation === "PLAN")
         // r = 10 * Math.cos(i/10);
         x.push(data[i].localEastWest);
         y.push(data[i].localNorthSouth);
@@ -221,12 +225,13 @@ export async function addToPlotlySurvey(data){
         c.push(data[i].doglegSeverity);
     }
 
-    let trace = [{
+    let planTrace = [{
         type: 'scatter3d',
         mode: 'lines',
         x: x,
         y: y,
         z: z,
+        name:'Plan',
         line: {
           width: 10,
           color: 'red'},
@@ -236,5 +241,5 @@ export async function addToPlotlySurvey(data){
           cmax: 50
         }
     }];
-    Plotly.addTraces('planvactual',trace);
+    Plotly.addTraces('planvactual',planTrace);
 }

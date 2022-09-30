@@ -4,6 +4,7 @@ import { makePlotlySurvey, addToPlotlySurvey } from '../global-chart.js';
 let loader = document.querySelector(".loader-big");
 let dropdown = document.getElementById('selDataset');
 
+
 loader.style.display = "flex";
 loader.style.height = '100vh'
 loader.style.width = '100vw'
@@ -30,7 +31,8 @@ document.getElementById('targetformation').innerHTML = well.targetFormation;
 document.getElementById('wellid').innerHTML = well.id;
 // end Header info
 
-let surveyData = await getSurveyDataByWellId(wellId, token);
+let plan = await getSurveyDataByWellId(wellId,'PLAN', token);
+let actual = await getSurveyDataByWellId(wellId,'ACTUAL', token);
 
 function init(data) {
     let option;
@@ -73,12 +75,14 @@ async function loadSubjectSurveys(data) {
 
 async function changed(id) {
     //fetch data offset surveys
-    let data = await getSurveyDataByWellId(wellId, token);
+    let data = await getSurveyDataByWellId(wellId,'ACTUAL', token);
     await addToPlotlySurvey(data);
 }
 
-await loadSubjectSurveys(surveyData);
-await makePlotlySurvey(surveyData);
+await loadSubjectSurveys(actual);
+await makePlotlySurvey(actual);
+await addToPlotlySurvey(plan);
+
 init(offsetWells);
 
 loader.style.display = "none";
