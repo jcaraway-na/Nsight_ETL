@@ -1,4 +1,4 @@
-import { getBitRecord, getSectionSummary, getTimeData, getBoreHole, getFormation, getDailySummary,getHeatmapData} from '../ApiCalls/calls.js'
+import { getBitRecord, getSectionSummary, getTimeData, getBoreHole, getFormation, getDailySummary} from '../ApiCalls/calls.js'
 import { dvdChart, predictedTimeData, timeDataSubject } from '../Analytics/charts.js'
 import { makePlotly, addToPlotly } from '../global-chart.js';
 let loader = document.querySelector(".loader-big");
