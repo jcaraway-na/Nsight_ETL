@@ -1,7 +1,9 @@
-import { getBitRecord, getSectionSummary, getTimeData, getBoreHole, getFormation, getDailySummary, init } from '../ApiCalls/calls.js'
+import { getBitRecord, getSectionSummary, getTimeData, getBoreHole, getFormation, getDailySummary,getHeatmapData} from '../ApiCalls/calls.js'
 import { dvdChart, predictedTimeData, timeDataSubject } from '../Analytics/charts.js'
 import { makePlotly, addToPlotly } from '../global-chart.js';
 let loader = document.querySelector(".loader-big");
+let dropdown = document.getElementById('selDataset');
+
 loader.style.display = "flex";
 loader.style.height = '100vh'
 loader.style.width = '100vw'
@@ -30,6 +32,16 @@ async function header() {
     document.getElementById('state').innerHTML = well.state;
     document.getElementById('targetformation').innerHTML = well.targetFormation;
     document.getElementById('wellid').innerHTML = well.id;
+}
+
+function init(data) {
+    let option;
+    for (let i = 0; i < data.length; i++) {
+        option = document.createElement('option');
+        option.text = data[i].wellName;
+        option.value = data[i].wellId;
+        dropdown.add(option);
+    }
 }
 
 async function sectionSummary(id) {
@@ -195,6 +207,19 @@ await boreHole(wellId);
 await formationDetails(wellId);
 await sectionSummary(wellId);
 await dvdRopPlot();
+
+// Click on row in AFE Usage Table, calls selected cost code and displays it to the table below
+$(document).ready(function(){
+    $(document).on('click','#formation-details tbody tr',async function(){
+        let startDepth = $(this).find('td:eq(1)').text();
+        let endDepth = $(this).find('td:eq(2)').text();
+        
+
+    });
+});
+
+init(offsetWells);
+
 loader.style.display = "none";
 loader.style.height = '0vh'
 loader.style.width = '0vw'

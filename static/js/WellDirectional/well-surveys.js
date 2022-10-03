@@ -45,7 +45,7 @@ function init(data) {
 }
 
 // Get Subject well survey data.
-async function loadSubjectSurveys(data) {
+async function loadSubjectSurveys(data,dataset) {
 
     let over = 'style="color: white; background-color:rgba(255,0,0,.7);"'
     let under = ''
@@ -57,6 +57,13 @@ async function loadSubjectSurveys(data) {
         else {
             tdOver = under;
         }
+        var tableId;
+        if(dataset === 'Actual'){
+            tableId = '#approvedsurveys';
+        }
+        else if (dataset === 'Plan'){
+            tableId = '#plansurveys';
+        }
         var row = `<tr>
                         <td>${data[i].measuredDepth}</td>
                         <td>${data[i].tvd}</td>
@@ -66,7 +73,7 @@ async function loadSubjectSurveys(data) {
                         <td>${data[i].toolFace}</td>
                         <td>${data[i].vertSection}</td>
                     </tr>`;
-        var table = $(`#approvedsurveys`);
+        var table = $(`${tableId}`);
 
         table.append(row);
     }
@@ -79,7 +86,8 @@ async function changed(id) {
     await addToPlotlySurvey(data);
 }
 
-await loadSubjectSurveys(actual);
+await loadSubjectSurveys(actual,'Actual');
+await loadSubjectSurveys(plan,'Plan');
 await makePlotlySurvey(actual);
 await addToPlotlySurvey(plan);
 

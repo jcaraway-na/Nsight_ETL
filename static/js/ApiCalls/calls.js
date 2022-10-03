@@ -264,3 +264,17 @@ export async function getSurveyDataByWellId(wellId,pa,token){
 
     return data;
 }
+
+export async function getHeatmapData(wellId,startDepth,endDepth,token){
+    var uri = `${api.GetParameterHeatmapData}${wellId}/${startDepth}/${endDepth}`
+    const responce = await fetch(uri,{
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        method: 'GET'
+    });
+    const data = await responce.json();
+
+    return data;
+}

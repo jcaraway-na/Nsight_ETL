@@ -1,5 +1,7 @@
 
-export async function makePlotly(data,xlabel,ylabel,divlabel,well,type){
+import {percentile} from '../js/Analytics/percentile.js'
+
+export async function makePlotly(data, xlabel, ylabel, divlabel, well, type) {
     var x = [], y = [];
     var row;
 
@@ -9,21 +11,21 @@ export async function makePlotly(data,xlabel,ylabel,divlabel,well,type){
         x.push(row[xlabel]);
         y.push(row[ylabel]);
     }
-    
+
     let trace = [];
 
     trace = [{
-        x:x,
-        y:y,
-        name:well,
-        type:type,
+        x: x,
+        y: y,
+        name: well,
+        type: type,
         marker: {
             color: 'rgba(135, 61, 255, .8',
             size: 8
         }
     }];
 
-    if(divlabel === 'dvd'){
+    if (divlabel === 'dvd') {
         var layout = {
             xaxis: {
                 title: 'Days',
@@ -40,7 +42,7 @@ export async function makePlotly(data,xlabel,ylabel,divlabel,well,type){
                 x: 1,
                 xanchor: 'right',
                 y: 1
-              },
+            },
             paper_bgcolor: 'rgba(0,0,0,0)',
             plot_bgcolor: 'rgba(0,0,0,0)',
             height: 300,
@@ -54,7 +56,7 @@ export async function makePlotly(data,xlabel,ylabel,divlabel,well,type){
 
         }
     }
-    else if(divlabel==='costcodebar'){
+    else if (divlabel === 'costcodebar') {
         var layout = {
             xaxis: {
                 title: xlabel,
@@ -70,7 +72,7 @@ export async function makePlotly(data,xlabel,ylabel,divlabel,well,type){
                 x: 1,
                 xanchor: 'right',
                 y: 1
-              },
+            },
             paper_bgcolor: 'rgba(0,0,0,0)',
             plot_bgcolor: 'rgba(0,0,0,0)',
             height: 380,
@@ -79,29 +81,58 @@ export async function makePlotly(data,xlabel,ylabel,divlabel,well,type){
                 r: 55,
                 b: 100,
                 t: 50,
-                pad:4
-                
+                pad: 4
+
             },
 
         }
     }
-    else{
+    else if (divlabel === 'sectionsummary'){
         var layout = {
-            xaxis:{
-                title: xlabel,
+            xaxis: {
+                title: 'Hole Section',
                 gridcolor: 'rgba(0,0,0,.2)'
             },
-            yaxis:{
-                title: ylabel,
+            yaxis: {
+                title: 'Avg ROP',
                 gridcolor: 'rgba(0,0,0,.2)'
-    
+
             },
             showlegend: true,
             legend: {
                 x: 1,
                 xanchor: 'right',
                 y: 1
-              },
+            },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            height: 320,
+            margin: {
+                l: 55,
+                r: 10,
+                b: 100,
+                t: 20,
+                pad: 1
+            }
+        }
+    }
+    else {
+        var layout = {
+            xaxis: {
+                title: xlabel,
+                gridcolor: 'rgba(0,0,0,.2)'
+            },
+            yaxis: {
+                title: ylabel,
+                gridcolor: 'rgba(0,0,0,.2)'
+
+            },
+            showlegend: true,
+            legend: {
+                x: 1,
+                xanchor: 'right',
+                y: 1
+            },
             paper_bgcolor: 'rgba(0,0,0,0)',
             plot_bgcolor: 'rgba(0,0,0,0)',
             height: 320,
@@ -115,37 +146,37 @@ export async function makePlotly(data,xlabel,ylabel,divlabel,well,type){
         }
     }
 
-    var config = {responsive: true};
-    Plotly.newPlot(divlabel,trace,layout,config);
+    var config = { responsive: true };
+    Plotly.newPlot(divlabel, trace, layout, config);
 }
 
-export async function addToPlotly(data,xlabel,ylabel,divlabel,well,type){
+export async function addToPlotly(data, xlabel, ylabel, divlabel, well, type) {
     var x = [], y = [];
     var row;
 
-    for(var i = 0; i < data.length; i++){
+    for (var i = 0; i < data.length; i++) {
         row = data[i];
         x.push(row[xlabel]);
         y.push(row[ylabel]);
     }
-    
+
     let trace = [];
 
     //create trace
-    trace =[{
-        x:x,
-        y:y,
-        name:well,
-        type:type,
+    trace = [{
+        x: x,
+        y: y,
+        name: well,
+        type: type,
         marker: {
             color: 'rgba(170, 174, 193, .8)',
             size: 8
         }
     }];
-    Plotly.addTraces(divlabel,trace);
+    Plotly.addTraces(divlabel, trace);
 }
 
-export async function makePlotlySurvey(data){
+export async function makePlotlySurvey(data) {
 
     var i, r;
     var x = [];
@@ -153,12 +184,12 @@ export async function makePlotlySurvey(data){
     var z = [];
     var c = [];
 
-    for(i = 0; i < data.length; i++){
+    for (i = 0; i < data.length; i++) {
         // r = 10 * Math.cos(i/10);
-        if(data[i].annotation === "ACTUAL")
-        x.push(data[i].localEastWest);
+        if (data[i].annotation === "ACTUAL")
+            x.push(data[i].localEastWest);
         y.push(data[i].localNorthSouth);
-        z.push(-1*data[i].tvd);
+        z.push(-1 * data[i].tvd);
         c.push(data[i].doglegSeverity);
     }
 
@@ -168,31 +199,39 @@ export async function makePlotlySurvey(data){
         x: x,
         y: y,
         z: z,
-        name:'Actual',
+        name: 'Actual',
         line: {
-          width: 10,
-          color: c,
-          colorscale: "Portland"},
+            width: 10,
+            color: c,
+            colorscale: "Portland"
+        },
         marker: {
-          size: 3.5,
-          color: c,
-          colorscale: "Greens",
-          cmin: -20,
-          cmax: 50
+            size: 3.5,
+            color: c,
+            colorscale: "Greens",
+            cmin: -20,
+            cmax: 50
         }
     }];
-    
-    var layout = {
-        scene:{
 
-          xaxis: {
-           nticks: 9,
-           range: [-1500, 1500],
-         },
-          yaxis: {
-           nticks: 7,
-           range: [0, 15000],
-         }},
+    var layout = {
+        scene: {
+
+            xaxis: {
+                nticks: 9,
+                range: [-1500, 1500],
+            },
+
+            yaxis: {
+                nticks: 7,
+                range: [0, 15000],
+            }
+        },
+        legend: {
+            x: 1,
+            xanchor: 'right',
+            y: 1
+        },
         paper_bgcolor: 'rgba(0,0,0,0)',
         plot_bgcolor: 'rgba(0,0,0,0)',
         autosize: true,
@@ -204,24 +243,24 @@ export async function makePlotlySurvey(data){
 
         },
     };
-    
+
     var config = { responsive: true }
     Plotly.newPlot('planvactual', trace, layout, config);
 }
 
-export async function addToPlotlySurvey(data){
+export async function addToPlotlySurvey(data) {
     var i, r;
     var x = [];
     var y = [];
     var z = [];
     var c = [];
 
-    for(i = 0; i < data.length; i++){
-        if(data[i].annotation === "PLAN")
-        // r = 10 * Math.cos(i/10);
-        x.push(data[i].localEastWest);
+    for (i = 0; i < data.length; i++) {
+        if (data[i].annotation === "PLAN")
+            // r = 10 * Math.cos(i/10);
+            x.push(data[i].localEastWest);
         y.push(data[i].localNorthSouth);
-        z.push(-1*data[i].tvd);
+        z.push(-1 * data[i].tvd);
         c.push(data[i].doglegSeverity);
     }
 
@@ -231,15 +270,16 @@ export async function addToPlotlySurvey(data){
         x: x,
         y: y,
         z: z,
-        name:'Plan',
+        name: 'Plan',
         line: {
-          width: 10,
-          color: 'red'},
+            width: 10,
+            color: 'red'
+        },
         marker: {
-          size: 3.5,
-          cmin: -20,
-          cmax: 50
+            size: 3.5,
+            cmin: -20,
+            cmax: 50
         }
     }];
-    Plotly.addTraces('planvactual',planTrace);
+    Plotly.addTraces('planvactual', planTrace);
 }

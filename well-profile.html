@@ -78,7 +78,7 @@
                         </tr>
                     </table>
                 </div>
-                <div class="col-sm-4  panels-info">
+                <div class="col  panels-info">
                     <table>
                         <tr>
                             <td style="text-align: right;" class="medium-font">State:</td>
@@ -101,13 +101,19 @@
                     </table>
                 </div>
                 <!-- filters -->
-                <div class="col panels-info">
+                <div class="col-sm-4 panels-info">
                     <caption style="caption-side:top;">
-                        <p style="text-align: left;" class="medium-font">Filters</p>
+                        <p style="text-align: left;" class="medium-font">Select Offset Well</p>
                     </caption>
-                    <select style="color: white;" id="selDataset" class="btn purple dropdown-toggle"
-                        onchange="optionChanged(this.value)"></select>
-                </div>
+                    <div class="row">
+                        <div class="col">
+                            <select style="width: 250px;" id="selDataset" class="btn btn-secondary dropdown-toggle" onchange="changed(this.value)"></select>
+                        </div>
+                        <div class="col">
+                                <input type="color" id="head" name="head" value="#e66465">
+                        </div>
+                    </div>
+            </div>
                 <!-- end of filters  -->
             </div>
             <!-- end well header information -->
@@ -115,16 +121,16 @@
             <!-- Summary Table and DVD -->
             <div class="row">
 
-                <div class="col panels">
+                <div class="col-sm-4 panels">
                     <caption style="caption-side:top;">
                         <p style="text-align: left;" class="medium-font">Days vs Depth</p>
                     </caption>
                     <div id="dvd">
                     </div>
                 </div>
-                <div class="col-sm-4 panels">
+                <div class="col panels">
                     <caption style="caption-side:top;">
-                        <p style="text-align: left;" class="medium-font">Days vs Field Est.</p>
+                        <p style="text-align: left;" class="medium-font">Hole Section Performance</p>
                     </caption>
                     <div id="sectionsummary">
                     </div>
@@ -224,11 +230,6 @@
             </div>
             <!-- Formation data -->
             <div class="row">
-                <div id="dvd" class="col-sm-4 panels">
-                    <caption style="caption-side:top;">
-                        <p style="text-align: left;" class="medium-font">Well Performance</p>
-                    </caption>
-                </div>
                 <div class="col panels">
                     <caption style="caption-side:top;">
                         <p style="text-align: left;" class="medium-font">Formation Details</p>

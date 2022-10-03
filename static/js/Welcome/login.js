@@ -38,7 +38,8 @@ async function login() {
             GetFieldEstByWellId: calls['12']["uri"],
             GetBudgetVsFeByWellId: calls['13']["uri"],
             GetAccountCostByWellIdCostCode: calls['14']["uri"],
-            GetSurveysByWellId: calls['15']["uri"]
+            GetSurveysByWellId: calls['15']["uri"],
+            GetParameterHeatmapData: calls['16']["uri"]
         }));
         const api = JSON.parse(sessionStorage.getItem('apiCalls'));
 
