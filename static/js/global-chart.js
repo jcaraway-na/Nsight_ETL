@@ -7,9 +7,19 @@ export async function makePlotly(data, xlabel, ylabel, divlabel, well, type) {
 
     //pushes values to empty arrays
     for (var i = 0; i < data.length; i++) {
-        row = data[i];
-        x.push(row[xlabel]);
-        y.push(row[ylabel]);
+        if(divlabel === 'ROPFast'){
+            if(data[i].bitStatus = 1 && data[i].ropFast > 5){
+                row = data[i];
+                x.push(row[xlabel]);
+                y.push(row[ylabel]);
+            }
+        }
+        else{
+            row = data[i];
+            x.push(row[xlabel]);
+            y.push(row[ylabel]);
+        }
+
     }
 
     let trace = [];
@@ -174,6 +184,10 @@ export async function addToPlotly(data, xlabel, ylabel, divlabel, well, type) {
         }
     }];
     Plotly.addTraces(divlabel, trace);
+}
+
+export async function makeRopPlotly(data, xlabel, ylabel, divlabel, well, type){
+
 }
 
 export async function makePlotlySurvey(data) {
